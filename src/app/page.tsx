@@ -100,14 +100,14 @@ export default function Home() {
             <h2 className="text-3xl font-bold">Unlock Access</h2>
             <p className="mt-2 text-lg">Access public restrooms without any hassle.</p>
           </div>
-          <Image src="/images/lavpass_home_feed.png" alt="Unlock Mockup" width={220} height={440} />
+          <Image src="/images/lavpass_details_page.png" alt="Unlock Mockup" width={220} height={440} />
         </div>
         <div className="flex flex-col md:flex-row items-center justify-center gap-12">
           <div className="text-center md:text-right md:order-1 max-w-sm">
             <h2 className="text-3xl font-bold">Contribute & Share</h2>
             <p className="mt-2 text-lg">Help others by adding and verifying restroom codes.</p>
           </div>
-          <Image src="/images/lavpass_home_feed.png" alt="Contribute Mockup" width={220} height={440} />
+          <Image src="/images/lavpass_change_code.png" alt="Contribute Mockup" width={220} height={440} />
         </div>
       </section>
 
