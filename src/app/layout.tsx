@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Roboto } from '@next/font/google';
 import { Lexend } from '@next/font/google';
 import "./globals.css";
 
@@ -12,11 +11,6 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-const roboto = Roboto({
-  weight: ['400', '700'],
-  subsets: ['latin'],
 });
 
 const lexend = Lexend({
@@ -37,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${roboto.className} ${lexend.className} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${lexend.className} antialiased`}
       >
         {children}
       </body>
