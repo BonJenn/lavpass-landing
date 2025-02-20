@@ -55,7 +55,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="flex flex-col md:flex-row items-center justify-center py-20 gap-12 bg-[#445382]">
+      <section className="flex flex-col md:flex-row items-center justify-center py-5 gap-12 px-6 md:px-12 bg-[#445382]">
         <Image src="/images/lavpass_home_feed.png" alt="Phone Mockup" width={320} height={640} />
         <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-md">
           <h1 className="text-5xl font-extrabold leading-tight">Discover Loos Near You</h1>
@@ -87,7 +87,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="flex flex-col items-center py-20 bg-white text-[#445382]">
+      <section className="flex flex-col items-center py-20 px-4 sm:px-6 md:px-8 bg-white text-[#445382]">
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-20">
           <div className="text-center md:text-right md:order-1 max-w-sm">
             <h2 className="text-3xl font-bold">Search Effortlessly</h2>
