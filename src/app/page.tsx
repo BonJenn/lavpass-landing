@@ -1,6 +1,58 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
+import { Roboto } from '@next/font/google';
+
+const roboto = Roboto({
+  weight: ['400', '700'], // Specify the weights you need
+  subsets: ['latin'],     // Specify the subsets you need
+});
 
 export default function Home() {
+  // Hero subscription states
+  const [heroEmail, setHeroEmail] = useState("");
+  const [heroSubscribed, setHeroSubscribed] = useState(false);
+
+  // Bottom email section subscription states
+  const [bottomEmail, setBottomEmail] = useState("");
+  const [bottomSubscribed, setBottomSubscribed] = useState(false);
+
+  const handleHeroNotifyMe = async () => {
+    try {
+      const res = await fetch("/api/mailchimp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: heroEmail }),
+      });
+      if (!res.ok) {
+        throw new Error("Failed to subscribe.");
+      }
+      // Hide the form and show a simple success message
+      setHeroSubscribed(true);
+    } catch (error) {
+      console.error(error);
+      alert("There was an error subscribing. Please try again later.");
+    }
+  };
+
+  const handleBottomNotifyMe = async () => {
+    try {
+      const res = await fetch("/api/mailchimp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: bottomEmail }),
+      });
+      if (!res.ok) {
+        throw new Error("Failed to subscribe.");
+      }
+      // Hide the form and show a simple success message
+      setBottomSubscribed(true);
+    } catch (error) {
+      console.error(error);
+      alert("There was an error subscribing. Please try again later.");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-700 text-white">
       {/* Header Section */}
@@ -14,10 +66,29 @@ export default function Home() {
         <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-md">
           <h1 className="text-5xl font-extrabold leading-tight">Discover Loos Near You</h1>
           <p className="mt-6 text-lg">Launching soon on iPhone. Stay updated with the latest features.</p>
-          <div className="flex mt-10">
-            <input type="email" placeholder="Enter your email" className="p-3 rounded-l-lg border-2 border-transparent focus:border-white transition" />
-            <button className="bg-white text-blue-900 p-3 rounded-r-lg ml-2 hover:bg-gray-200 transition">Notify Me</button>
-          </div>
+
+          {/* Conditionally render Hero input or success message */}
+          {!heroSubscribed ? (
+            <div className="flex mt-10">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="p-3 rounded-l-lg border-2 border-transparent focus:border-white transition text-[#445382]"
+                value={heroEmail}
+                onChange={(e) => setHeroEmail(e.target.value)}
+              />
+              <button
+                className="bg-white text-blue-900 p-3 rounded-r-lg ml-2 hover:bg-gray-200 transition"
+                onClick={handleHeroNotifyMe}
+              >
+                Notify Me
+              </button>
+            </div>
+          ) : (
+            <p className="mt-10 text-lg bg-white text-blue-900 px-6 py-3 rounded-lg transition">
+              Thanks for subscribing! We&apos;ll keep you updated.
+            </p>
+          )}
         </div>
       </section>
 
@@ -69,14 +140,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Email Section */}
+      {/* Bottom Email Section */}
       <section className="bg-white text-[#445382] py-20 px-8 text-center">
         <h2 className="text-4xl font-bold mb-6">Launching Soon</h2>
         <p className="mb-10 text-lg underline">Be the first to know.</p>
-        <div className="flex justify-center">
-          <input type="email" placeholder="Email" className="border-2 border-[#445382] p-3 rounded-l-lg" />
-          <button className="border-2 border-[#445382] bg-white text-[#445382] p-3 rounded-r-lg ml-2 hover:bg-gray-100 transition">Submit</button>
-        </div>
+        {!bottomSubscribed ? (
+          <div className="flex justify-center">
+            <input
+              type="email"
+              placeholder="Email"
+              className="border-2 border-[#445382] p-3 rounded-l-lg"
+              value={bottomEmail}
+              onChange={(e) => setBottomEmail(e.target.value)}
+            />
+            <button
+              className="border-2 border-[#445382] bg-white text-[#445382] p-3 rounded-r-lg ml-2 hover:bg-gray-100 transition"
+              onClick={handleBottomNotifyMe}
+            >
+              Submit
+            </button>
+          </div>
+        ) : (
+          <p className="mt-6 text-lg">
+            Thank you! We&apos;ll notify you as soon as our app is available.
+          </p>
+        )}
       </section>
 
       {/* Footer */}
