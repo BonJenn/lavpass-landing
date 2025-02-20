@@ -1,12 +1,6 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { Roboto } from '@next/font/google';
-
-const roboto = Roboto({
-  weight: ['400', '700'], // Specify the weights you need
-  subsets: ['latin'],     // Specify the subsets you need
-});
 
 export default function Home() {
   // Hero subscription states
