@@ -13,7 +13,7 @@ const lexend = Lexend({
 });
 
 export const metadata: Metadata = {
-  title: "FavPass",
+  title: "LavPass",
   description: "Crowdsourced Restroom Codes",
 };
 
