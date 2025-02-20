@@ -1,4 +1,10 @@
 import Image from "next/image";
+import { Roboto } from '@next/font/google';
+
+const roboto = Roboto({
+  weight: ['400', '700'], // Specify the weights you need
+  subsets: ['latin'],     // Specify the subsets you need
+});
 
 export default function Home() {
   return (
@@ -9,9 +15,9 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="flex flex-col sm:flex-row items-center justify-center py-20 gap-12 bg-[#445382]">
+      <section className="flex flex-col md:flex-row items-center justify-center py-20 gap-12 bg-[#445382]">
         <Image src="/images/lavpass_home_feed.png" alt="Phone Mockup" width={320} height={640} />
-        <div className="flex flex-col items-center sm:items-start text-center sm:text-left max-w-md">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-md">
           <h1 className="text-5xl font-extrabold leading-tight">Discover Loos Near You</h1>
           <p className="mt-6 text-lg">Launching soon on iPhone. Stay updated with the latest features.</p>
           <div className="flex mt-10">
@@ -23,22 +29,22 @@ export default function Home() {
 
       {/* About Section */}
       <section className="flex flex-col items-center py-20 bg-white text-[#445382]">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-12 mb-20">
-          <div className="text-center sm:text-right sm:order-1 max-w-sm">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-20">
+          <div className="text-center md:text-right md:order-1 max-w-sm">
             <h2 className="text-3xl font-bold">Search Effortlessly</h2>
             <p className="mt-2 text-lg">Find restrooms within walking distance with ease.</p>
           </div>
           <Image src="/images/lavpass_home_feed.png" alt="Search Mockup" width={220} height={440} />
         </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-12 mb-20">
-          <div className="text-center sm:text-right max-w-sm">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-20">
+          <div className="text-center md:text-right max-w-sm">
             <h2 className="text-3xl font-bold">Unlock Access</h2>
             <p className="mt-2 text-lg">Access public restrooms without any hassle.</p>
           </div>
           <Image src="/images/lavpass_home_feed.png" alt="Unlock Mockup" width={220} height={440} />
         </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-12">
-          <div className="text-center sm:text-right sm:order-1 max-w-sm">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+          <div className="text-center md:text-right md:order-1 max-w-sm">
             <h2 className="text-3xl font-bold">Contribute & Share</h2>
             <p className="mt-2 text-lg">Help others by adding and verifying restroom codes.</p>
           </div>
@@ -81,7 +87,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-[#445382] text-white py-6 text-center">
-        <p className="text-sm">&copy; 2023 LavPass. All rights reserved.</p>
+        <p className="text-sm">&copy; 2025 LavPass. All rights reserved.</p>
       </footer>
     </div>
   );
