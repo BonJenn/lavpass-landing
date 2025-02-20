@@ -2,86 +2,86 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-blue-900 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-700 text-white">
       {/* Header Section */}
-      <header className="flex justify-center py-4 bg-[#445382]">
-        <Image src="/images/lavpass_logo_white.png" alt="LavPass Logo" width={150} height={50} />
+      <header className="flex justify-center py-6 bg-[#445382] shadow-lg">
+        <Image src="/images/lavpass_logo_white.png" alt="LavPass Logo" width={160} height={60} />
       </header>
 
       {/* Hero Section */}
-      <section className="flex flex-col sm:flex-row items-center justify-center py-16 gap-8 bg-[#445382]">
-        <Image src="/images/lavpass_home_feed.png" alt="Phone Mockup" width={300} height={600} />
-        <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-          <h1 className="text-4xl font-bold">Loos near you.</h1>
-          <p className="mt-4">Coming soon to iPhone. Be notified when we launch.</p>
-          <div className="flex mt-8">
-            <input type="email" placeholder="Email" className="p-2 rounded-l" />
-            <button className="bg-white text-blue-900 p-2 rounded-r">Submit</button>
+      <section className="flex flex-col sm:flex-row items-center justify-center py-20 gap-12 bg-[#445382]">
+        <Image src="/images/lavpass_home_feed.png" alt="Phone Mockup" width={320} height={640} />
+        <div className="flex flex-col items-center sm:items-start text-center sm:text-left max-w-md">
+          <h1 className="text-5xl font-extrabold leading-tight">Discover Loos Near You</h1>
+          <p className="mt-6 text-lg">Launching soon on iPhone. Stay updated with the latest features.</p>
+          <div className="flex mt-10">
+            <input type="email" placeholder="Enter your email" className="p-3 rounded-l-lg border-2 border-transparent focus:border-white transition" />
+            <button className="bg-white text-blue-900 p-3 rounded-r-lg ml-2 hover:bg-gray-200 transition">Notify Me</button>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="flex flex-col items-center py-16 bg-white text-[#445382]">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-16">
-          <div className="text-center sm:text-right sm:order-1">
-            <h2 className="text-2xl font-semibold">Search</h2>
-            <p>for restrooms within walking distance</p>
+      <section className="flex flex-col items-center py-20 bg-white text-[#445382]">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-12 mb-20">
+          <div className="text-center sm:text-right sm:order-1 max-w-sm">
+            <h2 className="text-3xl font-bold">Search Effortlessly</h2>
+            <p className="mt-2 text-lg">Find restrooms within walking distance with ease.</p>
           </div>
-          <Image src="/images/lavpass_home_feed.png" alt="Search Mockup" width={200} height={400} />
+          <Image src="/images/lavpass_home_feed.png" alt="Search Mockup" width={220} height={440} />
         </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-16">
-          <div className="text-center sm:text-right">
-            <h2 className="text-2xl font-semibold">Unlock</h2>
-            <p>restrooms of public establishments without the hassle.</p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-12 mb-20">
+          <div className="text-center sm:text-right max-w-sm">
+            <h2 className="text-3xl font-bold">Unlock Access</h2>
+            <p className="mt-2 text-lg">Access public restrooms without any hassle.</p>
           </div>
-          <Image src="/images/lavpass_home_feed.png" alt="Unlock Mockup" width={200} height={400} />
+          <Image src="/images/lavpass_home_feed.png" alt="Unlock Mockup" width={220} height={440} />
         </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-          <div className="text-center sm:text-right sm:order-1">
-            <h2 className="text-2xl font-semibold">Contribute</h2>
-            <p>by adding and verifying codes to help others.</p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-12">
+          <div className="text-center sm:text-right sm:order-1 max-w-sm">
+            <h2 className="text-3xl font-bold">Contribute & Share</h2>
+            <p className="mt-2 text-lg">Help others by adding and verifying restroom codes.</p>
           </div>
-          <Image src="/images/lavpass_home_feed.png" alt="Contribute Mockup" width={200} height={400} />
+          <Image src="/images/lavpass_home_feed.png" alt="Contribute Mockup" width={220} height={440} />
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-gray-800 text-white py-16 px-8">
-        <h2 className="text-3xl font-bold text-center mb-8">FAQ</h2>
-        <div className="max-w-2xl mx-auto space-y-8">
+      <section className="bg-gray-900 text-white py-20 px-8">
+        <h2 className="text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+        <div className="max-w-3xl mx-auto space-y-10">
           <div>
-            <h3 className="text-xl font-semibold">Is LavPass free?</h3>
-            <p>Yes, LavPass is completely free.</p>
+            <h3 className="text-2xl font-semibold">Is LavPass free?</h3>
+            <p className="mt-2">Absolutely, LavPass is completely free to use.</p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold">How accurate are the codes?</h3>
-            <p>
-              LavPass codes are community-sourced and user-verified. Each code displays the last update time, and users can confirm or report accuracy to keep the info reliable.
+            <h3 className="text-2xl font-semibold">How accurate are the codes?</h3>
+            <p className="mt-2">
+              Our codes are community-sourced and verified. Each code shows the last update time, and users can confirm or report accuracy to ensure reliability.
             </p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold">What if a code is incorrect?</h3>
-            <p>
-              If a code is incorrect, users can report it instantly. LavPass relies on community verification, so outdated codes get flagged, and new ones are added to keep the info as accurate as possible.
+            <h3 className="text-2xl font-semibold">What if a code is incorrect?</h3>
+            <p className="mt-2">
+              If a code is incorrect, report it instantly. LavPass relies on community verification to flag outdated codes and add new ones for accuracy.
             </p>
           </div>
         </div>
       </section>
 
       {/* Email Section */}
-      <section className="bg-white text-[#445382] py-16 px-8 text-center">
-        <h2 className="text-3xl font-bold mb-4">Launching soon.</h2>
-        <p className="mb-8 underline">be notified first.</p>
+      <section className="bg-white text-[#445382] py-20 px-8 text-center">
+        <h2 className="text-4xl font-bold mb-6">Launching Soon</h2>
+        <p className="mb-10 text-lg underline">Be the first to know.</p>
         <div className="flex justify-center">
-          <input type="email" placeholder="Email" className="border-2 border-[#445382] p-2 rounded-l" />
-          <button className="border-2 border-[#445382] bg-white text-[#445382] p-2 rounded-r">Submit</button>
+          <input type="email" placeholder="Email" className="border-2 border-[#445382] p-3 rounded-l-lg" />
+          <button className="border-2 border-[#445382] bg-white text-[#445382] p-3 rounded-r-lg ml-2 hover:bg-gray-100 transition">Submit</button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#445382] text-white py-4 text-center">
-        <p>&copy; 2023 LavPass. All rights reserved.</p>
+      <footer className="bg-[#445382] text-white py-6 text-center">
+        <p className="text-sm">&copy; 2023 LavPass. All rights reserved.</p>
       </footer>
     </div>
   );
