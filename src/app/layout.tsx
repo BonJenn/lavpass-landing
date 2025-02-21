@@ -27,6 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${lexend.className} antialiased`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
