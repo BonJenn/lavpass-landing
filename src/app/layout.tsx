@@ -14,7 +14,7 @@ const lexend = Lexend({
 
 export const metadata: Metadata = {
   title: "LavPass",
-  description: "Crowdsourced Restroom Codes",
+  description: "Crowdsourced Restroom Code App",
 };
 
 export default function RootLayout({
