@@ -59,7 +59,7 @@ export default function Home() {
         <Image src="/images/lavpass_home_feed.png" alt="Phone Mockup" width={320} height={640} />
         <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-md">
           <h1 className="text-5xl font-extrabold leading-tight">Discover Loos Near You</h1>
-          <p className="mt-6 text-lg">Launching soon on iPhone. Stay updated with the latest features.</p>
+          <p className="mt-6 text-lg">Coming soon to iPhone. Be notified when we launch.</p>
 
           {/* Conditionally render Hero input or success message */}
           {!heroSubscribed ? (
