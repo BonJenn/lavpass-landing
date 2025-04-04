@@ -145,17 +145,75 @@ export default function Home() {
 
       {/* About Section */}
       <section className="flex flex-col items-center py-20 px-4 sm:px-6 md:px-8 bg-white text-[#445382] shadow-lg rounded-lg">
-        {/* About content here */}
+        <div className="flex flex-col md:flex-row items-center justify-around w-full">
+          <div className="flex flex-col items-center mb-10 md:mb-0">
+            <Image src="/images/lavpass_home_feed.png" alt="LavPass Home Feed" width={200} height={400} />
+            <h3 className="text-2xl font-bold mt-4">Search Effortlessly</h3>
+            <p className="text-lg text-center mt-2">
+              Find restrooms within walking distance with ease.
+            </p>
+          </div>
+          <div className="flex flex-col items-center mb-10 md:mb-0">
+            <Image src="/images/lavpass_details_page.png" alt="LavPass Details Page" width={200} height={400} />
+            <h3 className="text-2xl font-bold mt-4">Unlock Access</h3>
+            <p className="text-lg text-center mt-2">
+              Access public restrooms without any hassle.
+            </p>
+          </div>
+          <div className="flex flex-col items-center">
+            <Image src="/images/lavpass_change_code.png" alt="LavPass Change Code" width={200} height={400} />
+            <h3 className="text-2xl font-bold mt-4">Contribute & Share</h3>
+            <p className="text-lg text-center mt-2">
+              Help others by adding and verifying restroom codes.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* FAQ Section */}
       <section className="bg-gray-900 text-white py-20 px-8 shadow-lg rounded-lg">
-        {/* FAQ content here */}
+        <h2 className="text-4xl font-bold mb-6">Frequently Asked Questions</h2>
+        <div className="mb-4">
+          <h3 className="text-2xl font-semibold">How does LavPass work?</h3>
+          <p className="text-lg">
+            LavPass uses your location to find nearby restrooms and provides you with detailed information and user reviews.
+          </p>
+        </div>
+        <div className="mb-4">
+          <h3 className="text-2xl font-semibold">Is LavPass free to use?</h3>
+          <p className="text-lg">
+            Yes, LavPass is completely free to use. We aim to provide a valuable service to all travelers.
+          </p>
+        </div>
       </section>
 
       {/* Bottom Email Section */}
       <section className="bg-white text-[#445382] py-20 px-8 text-center shadow-lg rounded-lg">
-        {/* Bottom email subscription here */}
+        <h2 className="text-4xl font-bold mb-6">Stay Updated</h2>
+        <p className="text-lg mb-4">
+          Sign up for our newsletter to receive the latest updates and news about LavPass.
+        </p>
+        {!bottomSubscribed ? (
+          <div className="flex justify-center mt-10">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="p-3 rounded-l-lg border-2 border-gray-300 focus:border-blue-500 transition text-[#445382] w-full max-w-md"
+              value={bottomEmail}
+              onChange={(e) => setBottomEmail(e.target.value)}
+            />
+            <button
+              className="bg-blue-500 text-white p-3 rounded-r-lg ml-2 hover:bg-blue-600 transition"
+              onClick={handleBottomNotifyMe}
+            >
+              Subscribe
+            </button>
+          </div>
+        ) : (
+          <p className="mt-10 text-lg bg-blue-100 text-blue-900 px-6 py-3 rounded-lg transition">
+            Thanks for subscribing! We&apos;ll keep you updated.
+          </p>
+        )}
       </section>
 
       {/* Footer */}
