@@ -143,33 +143,81 @@ export default function Home() {
         )}
       </section>
 
-      {/* About Section */}
-      <section className="flex flex-col items-center py-20 px-4 sm:px-6 md:px-8 bg-white text-[#445382] shadow-lg rounded-lg">
-        <div className="flex flex-col md:flex-row items-center justify-around w-full">
-          <div className="flex flex-col items-center mb-10 md:mb-0">
-            <Image src="/images/lavpass_home_feed.png" alt="LavPass Home Feed" width={200} height={400} />
-            <h3 className="text-2xl font-bold mt-4">Search Effortlessly</h3>
-            <p className="text-lg text-center mt-2">
-              Find restrooms within walking distance with ease.
-            </p>
-          </div>
-          <div className="flex flex-col items-center mb-10 md:mb-0">
-            <Image src="/images/lavpass_details_page.png" alt="LavPass Details Page" width={200} height={400} />
-            <h3 className="text-2xl font-bold mt-4">Unlock Access</h3>
-            <p className="text-lg text-center mt-2">
-              Access public restrooms without any hassle.
-            </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <Image src="/images/lavpass_change_code.png" alt="LavPass Change Code" width={200} height={400} />
-            <h3 className="text-2xl font-bold mt-4">Contribute & Share</h3>
-            <p className="text-lg text-center mt-2">
-              Help others by adding and verifying restroom codes.
-            </p>
-          </div>
-        </div>
-      </section>
+      <section className="py-20 px-6 sm:px-12 bg-white text-[#445382]">
+  <div className="max-w-6xl mx-auto space-y-16">
+    {/* Row 1: Image left, Text right */}
+    <div className="flex flex-col md:flex-row-reverse items-center gap-8">
+      <div className="md:w-1/2">
+        <h2 className="text-4xl font-bold">Search Effortlessly</h2>
+        <p className="mt-4 text-lg">
+          Find the nearest restrooms with ease.
+        </p>
+      </div>
+      <div className="md:w-1/2 flex justify-center">
+        <Image
+          src="/images/about_story.png"
+          alt="Our Story"
+          width={300}
+          height={300}
+        />
+      </div>
+    </div>
 
+    {/* Row 2: Text left, Image right */}
+    <div className="flex flex-col md:flex-row items-center gap-8">
+      <div className="md:w-1/2">
+        <h2 className="text-4xl font-bold">Unlock Access to Clean Restrooms</h2>
+        <p className="mt-4 text-lg">
+          Crowdsourced restroom codes for whenever you need to go.
+        </p>
+      </div>
+      <div className="md:w-1/2 flex justify-center">
+        <Image
+          src="/images/about_services.png"
+          alt="What We Do"
+          width={300}
+          height={300}
+        />
+      </div>
+    </div>
+
+    {/* Row 3: Image left, Text right */}
+    <div className="flex flex-col md:flex-row-reverse items-center gap-8">
+      <div className="md:w-1/2">
+        <h2 className="text-4xl font-bold">Contribute and Share</h2>
+        <p className="mt-4 text-lg">
+          Help others by adding restrooms and verifying codes.
+        </p>
+      </div>
+      <div className="md:w-1/2 flex justify-center">
+        <Image
+          src="/images/about_community.png"
+          alt="Join Our Community"
+          width={300}
+          height={300}
+        />
+      </div>
+    </div>
+
+    {/* Row 4: Text left, Image right */}
+    <div className="flex flex-col md:flex-row items-center gap-8">
+      <div className="md:w-1/2">
+        <h2 className="text-4xl font-bold">Rate and Review</h2>
+        <p className="mt-4 text-lg">
+          Share your experience and help others find the best facilities.
+        </p>
+      </div>
+      <div className="md:w-1/2 flex justify-center">
+        <Image
+          src="/images/about_reviews.png"
+          alt="Rate and Review"
+          width={300}
+          height={300}
+        />
+      </div>
+    </div>
+  </div>
+</section>
       {/* FAQ Section */}
       <section className="bg-gray-900 text-white py-20 px-8 shadow-lg rounded-lg">
         <h2 className="text-4xl font-bold mb-6">Frequently Asked Questions</h2>
