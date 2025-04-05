@@ -50,30 +50,41 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const toiletScrollOffset = scrollPosition * 0.8;
 
-      // Move the toilet vertically
+      // --- Toilet Animation ---
+      // Clamp the scroll so the toilet stops moving after a threshold
+      const threshold = 300; // Adjust as needed
+      const effectiveScroll = Math.min(scrollPosition, threshold);
+      const toiletScrollOffset = effectiveScroll * 0.8;
+
       const toilet = document.querySelector(".toilet") as HTMLElement | null;
       if (toilet) {
         toilet.style.transform = `translate(-50%, calc(0px - ${toiletScrollOffset}px))`;
       }
 
-      // Scale and fade the text (but don't change its position)
+      // --- Hero Text Scaling & Fading ---
       if (heroTextRef.current) {
-        const scaleProgress = Math.min(scrollPosition / 400, 1);
-        const scale = 1 - scaleProgress * 0.3;
+        // Scaling: from 0 to 100 scroll units, scale from 1 to 0.3
+        const scaleProgress = Math.min(scrollPosition / 100, 1);
+        const scale = 1 - scaleProgress * 0.7; // At 100, scale = 0.3
 
-        const opacityProgress = Math.min(scrollPosition / 100, 1);
-        const newOpacity = 1 - opacityProgress;
+        // Fading: start fading after 100 scroll units and complete by 200
+        let newOpacity = 1;
+        if (scrollPosition < 100) {
+          newOpacity = 1;
+        } else {
+          const opacityProgress = Math.min((scrollPosition - 100) / 100, 1);
+          newOpacity = 1 - opacityProgress;
+        }
 
-        // Apply only scaling and opacity changes
-        heroTextRef.current.style.transform = `scale(${scale})`;
+        // Apply transformation (maintaining centering via translate and using transformOrigin)
+        heroTextRef.current.style.transformOrigin = "center center";
+        heroTextRef.current.style.transform = `translate(-50%, -50%) scale(${scale})`;
         heroTextRef.current.style.opacity = `${newOpacity}`;
-        heroTextRef.current.style.transformOrigin = 'center center';
       }
     };
 
-    handleScroll();
+    handleScroll(); // Run once on mount
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -113,14 +124,14 @@ export default function Home() {
           <Image src="/images/lavpass_logo_white.png" alt="LavPass Logo" width={200} height={80} />
         </header>
 
-        <section className="relative z-10 px-6 md:px-12 min-h-[100vh] pt-32 pb-10 overflow-visible">
+        <section className="relative z-10 px-6 md:px-12 min-h-[100vh] pt-200 pb-10 overflow-visible">
           <div 
             className="absolute z-0 w-full text-center"
             ref={heroTextRef}
             style={{
-              top: 'calc(2% - 10px)',
-              left: '0',
-              right: '0'
+              top: '8%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)'
             }}
           >
             <div className="max-w-[800px] mx-auto px-4">
@@ -135,7 +146,8 @@ export default function Home() {
               top: "80px",  
               width: "1400px", 
               height: "1200px",
-              transform: "translate(-50%, 0)"
+              transform: "translate(-50%, 0)",
+              filter: "drop-shadow(-15px 0 10px rgba(0, 0, 0, 0.3))"
             }}
           >
             <Image
@@ -189,7 +201,7 @@ export default function Home() {
                 Find the nearest restrooms with ease.
               </p>
             </div>
-            <div className="md:w-1/2 flex justify-center">
+            <div className="md:w-1/2 flex justify-center bg-[#445382] p-6 rounded-lg">
               <Image
                 src="/images/lavpass_home_feed.png"
                 alt="Our Story"
@@ -201,13 +213,13 @@ export default function Home() {
 
           {/* Row 2: Text left, Image right */}
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 text-right">
               <h2 className="text-4xl font-bold">Unlock Access to Clean Restrooms</h2>
               <p className="mt-4 text-lg">
                 Crowdsourced restroom codes for whenever you need to go.
               </p>
             </div>
-            <div className="md:w-1/2 flex justify-center">
+            <div className="md:w-1/2 flex justify-center bg-[#445382] p-6 rounded-lg">
               <Image
                 src="/images/lavpass_details_page.png"
                 alt="What We Do"
@@ -225,7 +237,7 @@ export default function Home() {
                 Help others by adding restrooms and verifying codes.
               </p>
             </div>
-            <div className="md:w-1/2 flex justify-center">
+            <div className="md:w-1/2 flex justify-center bg-[#445382] p-6 rounded-lg">
               <Image
                 src="/images/lavpass_change_code.png"
                 alt="Join Our Community"
@@ -237,13 +249,13 @@ export default function Home() {
 
           {/* Row 4: Text left, Image right */}
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 text-right">
               <h2 className="text-4xl font-bold">Rate and Review</h2>
               <p className="mt-4 text-lg">
                 Share your experience and help others find the best facilities.
               </p>
             </div>
-            <div className="md:w-1/2 flex justify-center">
+            <div className="md:w-1/2 flex justify-center bg-[#445382] p-6 rounded-lg">
               <Image
                 src="/images/lavpass_change_code.png"
                 alt="Rate and Review"
@@ -251,6 +263,25 @@ export default function Home() {
                 height={300}
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white text-[#445382] py-20 px-8 shadow-lg rounded-lg">
+        <div className="flex flex-col md:flex-row items-center gap-8">
+          <div className="md:w-1/2">
+            <h2 className="text-4xl font-bold">Largest Restroom Database</h2>
+            <p className="mt-4 text-lg">
+              With thousands of verified restroom locations across the United States, LavPass maintains the most comprehensive database of accessible facilities in the country.
+            </p>
+          </div>
+          <div className="md:w-1/2 flex justify-center">
+            <Image
+              src="/images/USA.png"
+              alt="United States Coverage Map"
+              width={400}
+              height={250}
+            />
           </div>
         </div>
       </section>
