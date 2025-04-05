@@ -195,7 +195,7 @@ export default function Home() {
         <div ref={featuresSectionRef} className="max-w-6xl mx-auto space-y-16">
           {/* Row 1: Image left, Text right */}
           <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 text-center md:text-left">
               <h2 className="text-4xl font-bold">Search Effortlessly</h2>
               <p className="mt-4 text-lg">
                 Find the nearest restrooms with ease.
@@ -213,7 +213,7 @@ export default function Home() {
 
           {/* Row 2: Text left, Image right */}
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/2 text-right">
+            <div className="md:w-1/2 text-center md:text-right">
               <h2 className="text-4xl font-bold">Unlock Access to Clean Restrooms</h2>
               <p className="mt-4 text-lg">
                 Crowdsourced restroom codes for whenever you need to go.
@@ -231,7 +231,7 @@ export default function Home() {
 
           {/* Row 3: Image left, Text right */}
           <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 text-center md:text-left">
               <h2 className="text-4xl font-bold">Contribute and Share</h2>
               <p className="mt-4 text-lg">
                 Help others by adding restrooms and verifying codes.
@@ -249,7 +249,7 @@ export default function Home() {
 
           {/* Row 4: Text left, Image right */}
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/2 text-right">
+            <div className="md:w-1/2 text-center md:text-right">
               <h2 className="text-4xl font-bold">Rate and Review</h2>
               <p className="mt-4 text-lg">
                 Share your experience and help others find the best facilities.
@@ -269,7 +269,7 @@ export default function Home() {
 
       <section className="bg-white text-[#445382] py-20 px-8 shadow-lg rounded-lg">
         <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="md:w-1/2">
+          <div className="md:w-1/2 text-center md:text-left">
             <h2 className="text-4xl font-bold">Largest Restroom Database</h2>
             <p className="mt-4 text-lg">
               With thousands of verified restroom locations across the United States, LavPass maintains the most comprehensive database of accessible facilities in the country.
