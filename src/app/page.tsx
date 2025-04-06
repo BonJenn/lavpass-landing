@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -332,6 +333,10 @@ export default function Home() {
 
       <footer className="bg-[#445382] text-white py-6 text-center shadow-lg">
         <p className="text-sm">&copy; 2025 LavPass. All rights reserved.</p>
+        <div className="mt-2">
+          <Link href="/terms-of-service" className="text-sm mx-2 hover:underline">Terms of Service</Link>
+          <Link href="/privacy-policy" className="text-sm mx-2 hover:underline">Privacy Policy</Link>
+        </div>
       </footer>
     </div>
   );
