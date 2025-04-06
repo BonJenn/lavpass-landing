@@ -19,7 +19,7 @@ export default function TermsOfService() {
         <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg shadow-lg text-white">
           <h2 className="text-2xl font-semibold mb-4">1. Acceptance of Terms</h2>
           <p className="mb-6">
-            By accessing or using the LavPass application ("App"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the App.
+            By accessing or using the LavPass application (&quot;App&quot;), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the App.
           </p>
 
           <h2 className="text-2xl font-semibold mb-4">2. Description of Service</h2>
@@ -44,7 +44,7 @@ export default function TermsOfService() {
 
           <h2 className="text-2xl font-semibold mb-4">6. Disclaimer of Warranties</h2>
           <p className="mb-6">
-            The App is provided "as is" without warranties of any kind. LavPass does not guarantee the accuracy, completeness, or reliability of user-generated content.
+            The App is provided &quot;as is&quot; without warranties of any kind. LavPass does not guarantee the accuracy, completeness, or reliability of user-generated content.
           </p>
 
           <h2 className="text-2xl font-semibold mb-4">7. Limitation of Liability</h2>
@@ -64,7 +64,7 @@ export default function TermsOfService() {
 
           <h2 className="text-2xl font-semibold mb-4">10. Contact Information</h2>
           <p className="mb-6">
-            If you have any questions about these Terms of Service, please contact us at contact@lavpass.com.
+            If you have questions about these Terms of Service, please contact us at contact@lavpass.com.
           </p>
         </div>
 

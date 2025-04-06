@@ -19,7 +19,7 @@ export default function PrivacyPolicy() {
         <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg shadow-lg text-white">
           <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
           <p className="mb-6">
-            This Privacy Policy explains how LavPass ("we," "our," or "us") collects, uses, and shares your information when you use our mobile application ("App").
+            This Privacy Policy explains how LavPass (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) collects, uses, and shares your information when you use our mobile application (&quot;App&quot;).
           </p>
 
           <h2 className="text-2xl font-semibold mb-4">2. Information We Collect</h2>
@@ -66,14 +66,14 @@ export default function PrivacyPolicy() {
             We implement reasonable measures to protect your information from unauthorized access, alteration, or disclosure. However, no method of transmission over the internet or electronic storage is 100% secure.
           </p>
 
-          <h2 className="text-2xl font-semibold mb-4">7. Children's Privacy</h2>
+          <h2 className="text-2xl font-semibold mb-4">7. Children&apos;s Privacy</h2>
           <p className="mb-6">
             Our App is not intended for children under 13, and we do not knowingly collect personal information from children under 13.
           </p>
 
           <h2 className="text-2xl font-semibold mb-4">8. Changes to This Privacy Policy</h2>
           <p className="mb-6">
-            We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.
+            We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;Last Updated&quot; date.
           </p>
 
           <h2 className="text-2xl font-semibold mb-4">9. Contact Us</h2>
