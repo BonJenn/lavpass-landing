@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   // Hero subscription states
@@ -167,6 +168,10 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-[#445382] text-white py-6 text-center">
         <p className="text-sm">&copy; 2025 LavPass. All rights reserved.</p>
+        <div className="mt-2">
+          <Link href="/terms-of-service" className="text-sm mx-2 hover:underline">Terms of Service</Link>
+          <Link href="/privacy-policy" className="text-sm mx-2 hover:underline">Privacy Policy</Link>
+        </div>
       </footer>
     </div>
   );
