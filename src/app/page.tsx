@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-700 text-white">
       {/* Header Section */}
-      <header className="flex justify-center py-6 bg-[#445382] shadow-lg">
+      <header className="flex justify-center py-6 bg-[#445382]">
         <Image src="/images/lavpass_logo_white.png" alt="LavPass Logo" width={160} height={60} />
       </header>
 

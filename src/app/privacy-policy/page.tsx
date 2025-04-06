@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-700 text-white">
+    <div className="min-h-screen bg-[#445382] text-white">
       {/* Header Section */}
-      <header className="flex justify-center py-6 bg-[#445382] shadow-lg">
+      <header className="flex justify-center py-6 bg-[#445382]">
         <Link href="/">
           <Image src="/images/lavpass_logo_white.png" alt="LavPass Logo" width={160} height={60} />
         </Link>
@@ -78,7 +78,7 @@ export default function PrivacyPolicy() {
 
           <h2 className="text-2xl font-semibold mb-4">9. Contact Us</h2>
           <p className="mb-6">
-            If you have questions about this Privacy Policy, please contact us at privacy@lavpass.com.
+            If you have questions about this Privacy Policy, please contact us at contact@lavpass.com.
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export default function PrivacyPolicy() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#445382] text-white py-6 text-center">
+      <footer className="bg-[#445382] text-white py-6 text-center border-t border-white/20">
         <p className="text-sm">&copy; 2025 LavPass. All rights reserved.</p>
         <div className="mt-2">
           <Link href="/terms-of-service" className="text-sm mx-2 hover:underline">Terms of Service</Link>
