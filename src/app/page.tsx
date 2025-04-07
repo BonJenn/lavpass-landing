@@ -247,33 +247,14 @@ export default function Home() {
               />
             </div>
           </div>
-
-          {/* Row 4: Text left, Image right */}
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/2 text-center md:text-right">
-              <h2 className="text-4xl font-bold">Rate and Review</h2>
-              <p className="mt-4 text-lg">
-                Share your experience and help others find the best facilities.
-              </p>
-            </div>
-            <div className="md:w-1/2 flex justify-center bg-[#445382] p-6 rounded-lg">
-              <Image
-                src="/images/lavpass_change_code.png"
-                alt="Rate and Review"
-                width={300}
-                height={300}
-              />
-            </div>
-          </div>
         </div>
       </section>
-
       <section className="bg-white text-[#445382] py-20 px-8 shadow-lg rounded-lg">
         <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="md:w-1/2 text-center md:text-left">
-            <h2 className="text-4xl font-bold">Largest Restroom Database</h2>
+          <div className="md:w-1/2 text-center">
+            <h2 className="text-4xl font-bold">Over 60,000 Verified Restrooms</h2>
             <p className="mt-4 text-lg">
-              With thousands of verified restroom locations across the United States, LavPass maintains the most comprehensive database of accessible facilities in the country.
+              LavPass maintains the most comprehensive database of accessible facilities worldwide, with hundred more added daily. Search by location, accibility, and more! 
             </p>
           </div>
           <div className="md:w-1/2 flex justify-center">
@@ -288,18 +269,32 @@ export default function Home() {
       </section>
 
       <section className="bg-gray-900 text-white py-20 px-8 shadow-lg rounded-lg">
-        <h2 className="text-4xl font-bold mb-6">Frequently Asked Questions</h2>
-        <div className="mb-4">
-          <h3 className="text-2xl font-semibold">How does LavPass work?</h3>
-          <p className="text-lg">
-            LavPass uses your location to find nearby restrooms and provides you with detailed information and user reviews.
-          </p>
-        </div>
-        <div className="mb-4">
-          <h3 className="text-2xl font-semibold">Is LavPass free to use?</h3>
-          <p className="text-lg">
-            Yes, LavPass is completely free to use. We aim to provide a valuable service to all travelers.
-          </p>
+        <h2 className="text-4xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
+        <div className="max-w-3xl mx-auto space-y-10">
+          <div>
+            <h3 className="text-2xl font-semibold">How does LavPass work?</h3>
+            <p className="mt-2 text-lg">
+              LavPass uses your location to find nearby restrooms and provides you with detailed information and user reviews.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-2xl font-semibold">Is LavPass free?</h3>
+            <p className="mt-2 text-lg">
+              Absolutely, LavPass is completely free to use.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-2xl font-semibold">How accurate are the codes?</h3>
+            <p className="mt-2 text-lg">
+              Our codes are community-sourced and verified. Each code shows the last update time, and users can confirm or report accuracy to ensure reliability.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-2xl font-semibold">What if a code is incorrect?</h3>
+            <p className="mt-2 text-lg">
+              If a code is incorrect, report it instantly. LavPass relies on community verification to flag outdated codes and add new ones for accuracy.
+            </p>
+          </div>
         </div>
       </section>
 
