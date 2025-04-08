@@ -260,6 +260,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* STATS SECTION */}
+      <section className="relative z-30 py-20 px-6 sm:px-12 bg-white text-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <div className="md:w-1/2">
+              <Image
+                src="/images/USA.png"
+                alt="USA Map with Restroom Locations"
+                width={500}
+                height={400}
+                className="rounded-lg"
+              />
+            </div>
+            <div className="md:w-1/2 text-center md:text-left">
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">60,000+ Verified Restrooms</h2>
+              <p className="text-lg md:text-xl">
+                LavPass has the largest database of verified public restrooms across the United States, 
+                with real-time access codes and user reviews.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <div className="bg-blue-100 px-6 py-4 rounded-lg text-center">
+                  <span className="block text-3xl font-bold text-blue-600">60,000+</span>
+                  <span className="text-sm text-gray-600">Verified Restrooms</span>
+                </div>
+                <div className="bg-blue-100 px-6 py-4 rounded-lg text-center">
+                  <span className="block text-3xl font-bold text-blue-600">4,500+</span>
+                  <span className="text-sm text-gray-600">Cities Covered</span>
+                </div>
+                <div className="bg-blue-100 px-6 py-4 rounded-lg text-center">
+                  <span className="block text-3xl font-bold text-blue-600">10,000+</span>
+                  <span className="text-sm text-gray-600">Restroom Codes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ SECTION */}
       <section className="relative z-30 bg-black text-white py-20 px-8 shadow-lg rounded-lg mx-4 sm:mx-8 my-8">
         <h2 className="text-4xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
