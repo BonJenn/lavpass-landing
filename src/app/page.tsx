@@ -88,27 +88,60 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (featuresSectionRef.current) {
-      const featureRows = gsap.utils.toArray<HTMLDivElement>(
-        featuresSectionRef.current.children
-      );
+    // Only run animations if browser supports it and not in reduced motion mode
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (featuresSectionRef.current && !prefersReducedMotion) {
+      // Cleanup first to prevent duplications
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      
+      try {
+        // Force an update to get proper positions
+        ScrollTrigger.refresh(true);
+        
+        const featureRows = gsap.utils.toArray<HTMLDivElement>(
+          featuresSectionRef.current.children
+        );
 
-      featureRows.forEach((row) => {
-        gsap.from(row, {
-          opacity: 0,
-          y: 60,
-          duration: 1,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: row,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
+        featureRows.forEach((row, index) => {
+          // Make sure content is visible first, then animate
+          gsap.set(row, { opacity: 1, y: 0 });
+          
+          // Apply animation with delay to ensure page is ready
+          setTimeout(() => {
+            gsap.fromTo(row, 
+              { opacity: 0, y: 60 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power4.out",
+                scrollTrigger: {
+                  trigger: row,
+                  start: "top 95%",
+                  toggleActions: "play none none reset",
+                  // Force markers in development to debug
+                  // markers: process.env.NODE_ENV === 'development'
+                },
+              }
+            );
+          }, 100 * (index + 1));
         });
-      });
+      } catch (error) {
+        console.error("Animation error:", error);
+        // If animation fails, ensure content is visible
+        if (featuresSectionRef.current) {
+          const features = featuresSectionRef.current.children;
+          for (let i = 0; i < features.length; i++) {
+            (features[i] as HTMLElement).style.opacity = "1";
+            (features[i] as HTMLElement).style.transform = "translateY(0)";
+          }
+        }
+      }
     }
 
     return () => {
+      // Cleanup on unmount
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
@@ -170,36 +203,25 @@ export default function Home() {
       <section className="relative z-20 -mt-16 sm:-mt-24 md:-mt-32 py-10 bg-black text-white px-6 text-center shadow-lg rounded-lg">
         <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-4">Discover Loos Near You</h1>
         <p className="mt-6 text-lg mx-auto max-w-xl">
-          Coming soon to iPhone.<br />
-          Be notified when we launch.
+          Never get caught without a bathroom again. LavPass helps you find clean, accessible restrooms with verified entry codes wherever you go.
         </p>
-        {!heroSubscribed ? (
-          <div className="flex flex-col sm:flex-row mt-10 max-w-xl mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="p-3 rounded-lg sm:rounded-l-lg sm:rounded-r-none border-2 border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition text-black w-full mb-3 sm:mb-0"
-              value={heroEmail}
-              onChange={(e) => setHeroEmail(e.target.value)}
+        
+        <div className="mt-8 flex justify-center">
+          <a href="#" className="transform transition hover:scale-105 duration-200">
+            <Image 
+              src="/images/app_store_logo.png"
+              alt="Download on the App Store"
+              width={200}
+              height={60}
+              className="rounded-lg"
             />
-            <button
-              className="bg-blue-500 text-white p-3 rounded-lg sm:rounded-l-none sm:rounded-r-lg hover:bg-blue-600 transition transform hover:scale-105 duration-200 w-full sm:w-auto sm:px-6"
-              onClick={handleHeroNotifyMe}
-            >
-              Notify Me
-            </button>
-          </div>
-        ) : (
-          <p className="mt-10 text-lg bg-blue-900 text-white px-6 py-3 rounded-lg transition max-w-xl mx-auto shadow-md">
-            <span className="block font-semibold">Thanks for subscribing!</span> 
-            We&apos;ll keep you updated on our launch.
-          </p>
-        )}
+          </a>
+        </div>
       </section>
 
       {/* FEATURES */}
       <section className="py-20 px-6 sm:px-12 bg-gray-900 text-white">
-        <div ref={featuresSectionRef} className="max-w-6xl mx-auto space-y-24 md:space-y-32">
+        <div ref={featuresSectionRef} className="max-w-6xl mx-auto space-y-24 md:space-y-32 opacity-100">
           {/* (Feature blocks here...) */}
           {/* Feature 1 */}
           <div className="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
