@@ -86,30 +86,33 @@ export default function Home() {
           featuresSectionRef.current.children
         );
 
-        featureRows.forEach((row, index) => {
-          // Make sure content is visible first, then animate
+        // Set all feature rows to be visible initially for mobile fallback
+        featureRows.forEach(row => {
           gsap.set(row, { opacity: 1, y: 0 });
-          
-          // Apply animation with delay to ensure page is ready
-          setTimeout(() => {
-            gsap.fromTo(row, 
-              { opacity: 0, y: 60 },
-              {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power4.out",
-                scrollTrigger: {
-                  trigger: row,
-                  start: "top 95%",
-                  toggleActions: "play none none reset",
-                  // Force markers in development to debug
-                  // markers: process.env.NODE_ENV === 'development'
-                },
-              }
-            );
-          }, 100 * (index + 1));
         });
+
+        // Only use animation on non-mobile
+        if (window.innerWidth > 768) {
+          featureRows.forEach((row, index) => {
+            // Apply animation with delay to ensure page is ready
+            setTimeout(() => {
+              gsap.fromTo(row, 
+                { opacity: 0, y: 60 },
+                {
+                  opacity: 1,
+                  y: 0,
+                  duration: 1,
+                  ease: "power4.out",
+                  scrollTrigger: {
+                    trigger: row,
+                    start: "top 95%",
+                    toggleActions: "play none none reset",
+                  },
+                }
+              );
+            }, 100 * (index + 1));
+          });
+        }
       } catch (error) {
         console.error("Animation error:", error);
         // If animation fails, ensure content is visible
@@ -120,6 +123,13 @@ export default function Home() {
             (features[i] as HTMLElement).style.transform = "translateY(0)";
           }
         }
+      }
+    } else if (featuresSectionRef.current) {
+      // Make sure features are visible if animation is skipped
+      const features = featuresSectionRef.current.children;
+      for (let i = 0; i < features.length; i++) {
+        (features[i] as HTMLElement).style.opacity = "1";
+        (features[i] as HTMLElement).style.transform = "translateY(0)";
       }
     }
 
@@ -162,8 +172,10 @@ export default function Home() {
           className="toilet absolute z-10 left-1/2"
           style={{ 
             top: "20%",
-            width: "1600px",
-            height: "1200px",
+            width: "100%",
+            maxWidth: "1600px",
+            height: "auto",
+            aspectRatio: "4/3",
             transform: "translate(-50%, 0)",
             filter: "drop-shadow(-15px 0 10px rgba(0, 0, 0, 0.3))",
             overflow: "hidden"
@@ -204,10 +216,9 @@ export default function Home() {
 
       {/* FEATURES */}
       <section className="py-20 px-6 sm:px-12 bg-gray-900 text-white">
-        <div ref={featuresSectionRef} className="max-w-6xl mx-auto space-y-24 md:space-y-32 opacity-100">
-          {/* (Feature blocks here...) */}
+        <div ref={featuresSectionRef} className="max-w-6xl mx-auto space-y-24 md:space-y-32">
           {/* Feature 1 */}
-          <div className="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+          <div className="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16 opacity-100">
             <div className="md:w-1/2 text-center md:text-left">
               <h2 className="text-3xl md:text-4xl font-bold">Search Effortlessly</h2>
               <p className="mt-4 text-base md:text-lg">
@@ -226,7 +237,7 @@ export default function Home() {
           </div>
 
           {/* Feature 2 */}
-          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16 opacity-100">
             <div className="md:w-1/2 text-center md:text-right">
               <h2 className="text-3xl md:text-4xl font-bold">Unlock Access to Clean Restrooms</h2>
               <p className="mt-4 text-base md:text-lg">
@@ -245,7 +256,7 @@ export default function Home() {
           </div>
 
           {/* Feature 3 */}
-          <div className="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+          <div className="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16 opacity-100">
             <div className="md:w-1/2 text-center md:text-left">
               <h2 className="text-3xl md:text-4xl font-bold">Contribute and Share</h2>
               <p className="mt-4 text-base md:text-lg">
