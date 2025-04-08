@@ -152,7 +152,7 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="relative z-10 px-6 md:px-12 min-h-[70vh] md:min-h-[100vh] pt-[5vh] pb-0 md:pb-10 overflow-hidden">
+      <section className="relative z-10 px-6 md:px-12 min-h-[50vh] md:min-h-[100vh] pt-[2vh] pb-0 md:pb-10 overflow-hidden">
         <div 
           className="absolute z-0 w-full text-center"
           ref={heroTextRef}
@@ -171,12 +171,12 @@ export default function Home() {
         <div
           className="toilet absolute z-10 left-1/2"
           style={{ 
-            top: "15%",
-            width: "100%",
+            top: "5%",
+            width: "90%",
             maxWidth: "1600px",
             height: "auto",
             aspectRatio: "4/3",
-            maxHeight: "55vh",
+            maxHeight: "45vh",
             transform: "translate(-50%, 0)",
             filter: "drop-shadow(-15px 0 10px rgba(0, 0, 0, 0.3))",
             overflow: "hidden"
@@ -193,10 +193,10 @@ export default function Home() {
       </section>
 
       {/* THIS DIV ENSURES BLUE EXTENDS FULLY */}
-      <div className="h-20 md:h-32 bg-blue-700 absolute left-0 right-0 -bottom-1 z-0"></div>
+      <div className="h-10 md:h-32 bg-blue-700 absolute left-0 right-0 -bottom-1 z-0"></div>
 
       {/* ABOUT */}
-      <section className="relative z-20 -mt-5 sm:-mt-16 md:-mt-32 py-10 bg-black text-white px-6 text-center shadow-lg rounded-lg">
+      <section className="relative z-20 mt-5 sm:-mt-16 md:-mt-32 py-10 bg-black text-white px-6 text-center shadow-lg rounded-lg">
         <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-4">Discover Loos Near You</h1>
         <p className="mt-6 text-lg mx-auto max-w-xl">
           Never get caught without a bathroom again. LavPass helps you find clean, accessible restrooms with verified entry codes wherever you go.
