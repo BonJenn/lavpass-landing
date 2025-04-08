@@ -440,7 +440,7 @@ export default function Home() {
             <Link href="/terms-of-service" className="text-sm mx-3 my-1 hover:underline">Terms of Service</Link>
             <Link href="/privacy-policy" className="text-sm mx-3 my-1 hover:underline">Privacy Policy</Link>
             <a href="#" className="text-sm mx-3 my-1 hover:underline">Contact Us</a>
-            <a href="#" className="text-sm mx-3 my-1 hover:underline">About</a>
+            <Link href="/about" className="text-sm mx-3 my-1 hover:underline">About</Link>
           </div>
         </div>
       </footer>
