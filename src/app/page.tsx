@@ -9,8 +9,8 @@ import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  const [heroEmail, setHeroEmail] = useState("");
-  const [heroSubscribed, setHeroSubscribed] = useState(false);
+  const [_heroEmail, _setHeroEmail] = useState("");
+  const [_heroSubscribed, _setHeroSubscribed] = useState(false);
   const [bottomEmail, setBottomEmail] = useState("");
   const [bottomSubscribed, setBottomSubscribed] = useState(false);
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(0);
@@ -18,15 +18,15 @@ export default function Home() {
   const heroTextRef = useRef<HTMLDivElement>(null);
   const featuresSectionRef = useRef<HTMLDivElement>(null);
 
-  const handleHeroNotifyMe = async () => {
+  const _handleHeroNotifyMe = async () => {
     try {
       const res = await fetch("/api/mailchimp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: heroEmail }),
+        body: JSON.stringify({ email: _heroEmail }),
       });
       if (!res.ok) throw new Error("Failed to subscribe.");
-      setHeroSubscribed(true);
+      _setHeroSubscribed(true);
     } catch (error) {
       console.error(error);
       alert("There was an error subscribing. Please try again later.");

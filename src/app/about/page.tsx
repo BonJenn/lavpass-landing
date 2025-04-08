@@ -21,12 +21,12 @@ export default function About() {
           <p className="mb-6">
             At LavPass, we believe that access to clean, safe restrooms should be a right, not a privilege. 
             Our mission is to help people find and access public restrooms quickly and easily, 
-            removing the stress and uncertainty from one of life's basic necessities.
+            removing the stress and uncertainty from one of life&apos;s basic necessities.
           </p>
 
-          <h2 className="text-2xl font-semibold mb-4">The Problem We're Solving</h2>
+          <h2 className="text-2xl font-semibold mb-4">The Problem We&apos;re Solving</h2>
           <p className="mb-6">
-            We've all been there – walking around a city, desperately looking for a restroom, only to find 
+            We&apos;ve all been there – walking around a city, desperately looking for a restroom, only to find 
             that many are locked behind access codes or restricted to customers. LavPass was born from this 
             universal frustration and seeks to create a community-driven solution.
           </p>
@@ -43,7 +43,7 @@ export default function About() {
 
           <h2 className="text-2xl font-semibold mb-4">Our Story</h2>
           <p className="mb-6">
-            LavPass was founded in 2024 by a group of friends who were tired of the "bathroom scramble" 
+            LavPass was founded in 2024 by a group of friends who were tired of the &quot;bathroom scramble&quot; 
             during their urban adventures. What started as a shared Google Doc of restroom codes quickly 
             evolved into a passion project to create a comprehensive app that could help millions.
           </p>
@@ -58,16 +58,16 @@ export default function About() {
           <h2 className="text-2xl font-semibold mb-4">Our Values</h2>
           <ul className="list-disc pl-8 mb-6 space-y-2">
             <li><span className="font-semibold">Community First:</span> We believe in the power of collective knowledge and mutual support.</li>
-            <li><span className="font-semibold">Accessibility:</span> We're committed to making our app usable by everyone, regardless of ability.</li>
+            <li><span className="font-semibold">Accessibility:</span> We&apos;re committed to making our app usable by everyone, regardless of ability.</li>
             <li><span className="font-semibold">Respect:</span> We encourage respectful use of facilities and respect for business policies.</li>
-            <li><span className="font-semibold">Innovation:</span> We're constantly looking for better ways to serve our users' needs.</li>
+            <li><span className="font-semibold">Innovation:</span> We&apos;re constantly looking for better ways to serve our users&apos; needs.</li>
           </ul>
         </div>
 
         <div className="mt-10 text-center">
           <h2 className="text-2xl font-semibold mb-4">Join Our Team</h2>
           <p className="mb-6">
-            We're always looking for passionate individuals to help build LavPass. Whether you're an engineer or designer, we'd love to hear from you.
+            We&apos;re always looking for passionate individuals to help build LavPass. Whether you&apos;re an engineer or designer, we&apos;d love to hear from you.
             Shoot us a message at contact@lavpass.com
           </p>
           <Link href="/" className="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105 duration-200 cursor-pointer">
