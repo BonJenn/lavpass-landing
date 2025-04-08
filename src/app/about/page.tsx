@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function TermsOfService() {
+export default function About() {
   return (
     <div className="min-h-screen bg-[#445382] text-white">
       {/* Header Section */}
@@ -14,66 +14,64 @@ export default function TermsOfService() {
 
       {/* Content Section */}
       <section className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold mb-8 text-center">Terms of Service</h1>
-        <h2>Lavpass provides user-submitted information about publicly accessible restrooms. Businesses may have their own policies regarding restroom use. Availability is not guaranteed. Please be respectful and comply with all business rules</h2>
-        <br></br>
-        <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg shadow-lg text-white">
-          <h2 className="text-2xl font-semibold mb-4">1. Acceptance of Terms</h2>
+        <h1 className="text-4xl font-bold mb-8 text-center">About LavPass</h1>
+        
+        <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg shadow-lg text-white mb-10">
+          <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
           <p className="mb-6">
-            By accessing or using the LavPass application (&quot;App&quot;), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the App.
+            At LavPass, we believe that access to clean, safe restrooms should be a right, not a privilege. 
+            Our mission is to help people find and access public restrooms quickly and easily, 
+            removing the stress and uncertainty from one of life's basic necessities.
           </p>
 
-          <h2 className="text-2xl font-semibold mb-4">2. Description of Service</h2>
+          <h2 className="text-2xl font-semibold mb-4">The Problem We're Solving</h2>
           <p className="mb-6">
-            LavPass is a mobile application that helps users locate and access public restrooms. The App provides user-generated information about restroom locations and access codes.
-            
+            We've all been there – walking around a city, desperately looking for a restroom, only to find 
+            that many are locked behind access codes or restricted to customers. LavPass was born from this 
+            universal frustration and seeks to create a community-driven solution.
           </p>
 
-          <h2 className="text-2xl font-semibold mb-4">3. User Accounts</h2>
+          <div className="my-8 flex justify-center">
+            <Image 
+              src="/images/lavpass_icon.png"
+              alt="LavPass Icon"
+              width={120}
+              height={120}
+              className="rounded-2xl shadow-lg"
+            />
+          </div>
+
+          <h2 className="text-2xl font-semibold mb-4">Our Story</h2>
           <p className="mb-6">
-            You may be required to create an account to use certain features of the App. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.
+            LavPass was founded in 2024 by a group of friends who were tired of the "bathroom scramble" 
+            during their urban adventures. What started as a shared Google Doc of restroom codes quickly 
+            evolved into a passion project to create a comprehensive app that could help millions.
           </p>
 
-          <h2 className="text-2xl font-semibold mb-4">4. User Content</h2>
+          <h2 className="text-2xl font-semibold mb-4">How It Works</h2>
           <p className="mb-6">
-            The App allows users to submit content, including restroom locations and access codes. By submitting content, you grant LavPass a worldwide, non-exclusive, royalty-free license to use, reproduce, and distribute such content in connection with the App.
+            Our app uses crowdsourced information to map accessible restrooms, including those in coffee shops, 
+            department stores, and public facilities. Users can find nearby restrooms, access entry codes when 
+            needed, and contribute by verifying or updating information to keep our database current and reliable.
           </p>
 
-          <h2 className="text-2xl font-semibold mb-4">5. Prohibited Conduct</h2>
-          <p className="mb-6">
-            You agree not to use the App for any unlawful purpose or in any way that could damage, disable, or impair the App. This includes submitting false or misleading information.
-          </p>
-
-          <h2 className="text-2xl font-semibold mb-4">6. Disclaimer of Warranties</h2>
-          <p className="mb-6">
-            The App is provided &quot;as is&quot; without warranties of any kind. LavPass does not guarantee the accuracy, completeness, or reliability of user-generated content.
-          </p>
-
-          <h2 className="text-2xl font-semibold mb-4">7. Limitation of Liability</h2>
-          <p className="mb-6">
-            LavPass shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the App.
-          </p>
-
-          <h2 className="text-2xl font-semibold mb-4">8. Changes to Terms</h2>
-          <p className="mb-6">
-            LavPass reserves the right to modify these Terms of Service at any time. We will notify users of significant changes through the App or by email.
-          </p>
-
-          <h2 className="text-2xl font-semibold mb-4">9. Governing Law</h2>
-          <p className="mb-6">
-            These Terms of Service shall be governed by the laws of the United States without regard to its conflict of law provisions.
-          </p>
-
-          <h2 className="text-2xl font-semibold mb-4">10. Contact Information</h2>
-          <p className="mb-6">
-            If you have questions about these Terms of Service, please contact us at contact@lavpass.com.
-          </p>
+          <h2 className="text-2xl font-semibold mb-4">Our Values</h2>
+          <ul className="list-disc pl-8 mb-6 space-y-2">
+            <li><span className="font-semibold">Community First:</span> We believe in the power of collective knowledge and mutual support.</li>
+            <li><span className="font-semibold">Accessibility:</span> We're committed to making our app usable by everyone, regardless of ability.</li>
+            <li><span className="font-semibold">Respect:</span> We encourage respectful use of facilities and respect for business policies.</li>
+            <li><span className="font-semibold">Innovation:</span> We're constantly looking for better ways to serve our users' needs.</li>
+          </ul>
         </div>
 
-        <div className="mt-8 text-center">
-          <p className="text-sm opacity-80">Last Updated: April 2025</p>
-          <Link href="/" className="inline-block mt-4 text-white hover:text-gray-200 underline">
-            Return to Home
+        <div className="mt-10 text-center">
+          <h2 className="text-2xl font-semibold mb-4">Join Our Team</h2>
+          <p className="mb-6">
+            We're always looking for passionate individuals to help build LavPass. Whether you're an engineer or designer, we'd love to hear from you.
+            Shoot us a message at contact@lavpass.com
+          </p>
+          <Link href="/" className="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105 duration-200 cursor-pointer">
+            Download LavPass Today
           </Link>
         </div>
       </section>
@@ -126,4 +124,4 @@ export default function TermsOfService() {
       </footer>
     </div>
   );
-} 
+}
