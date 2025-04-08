@@ -186,7 +186,7 @@ export default function Home() {
             alt="Toilet"
             unoptimized
             fill
-            className="object-contain max-h-[45vh] md:max-h-none w-[90%] md:w-full"
+            className="object-contain max-h-[60vh] md:max-h-none w-full"
           />
         </div>
       </section>
