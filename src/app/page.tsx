@@ -43,8 +43,12 @@ export default function Home() {
       const toiletScrollOffset = effectiveScroll * 0.5;
 
       const toilet = document.querySelector(".toilet") as HTMLElement | null;
-      if (toilet) {
+      // Only apply toilet animation on desktop (not mobile)
+      if (toilet && window.innerWidth >= 768) {
         toilet.style.transform = `translate(-50%, calc(0px - ${toiletScrollOffset}px))`;
+      } else if (toilet && window.innerWidth < 768) {
+        // Keep toilet in fixed position on mobile
+        toilet.style.transform = `translate(-50%, 0)`;
       }
 
       if (heroTextRef.current) {
