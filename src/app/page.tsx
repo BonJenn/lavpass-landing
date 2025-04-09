@@ -17,7 +17,7 @@ export default function Home() {
   const [citiesCount, setCitiesCount] = useState(0);
   const [codesCount, setCodesCount] = useState(0);
   const [toiletPosition, setToiletPosition] = useState("13%");
-  const [heroTextPosition, setHeroTextPosition] = useState("15%");
+  const [heroTextPosition, setHeroTextPosition] = useState("13%");
 
   const heroTextRef = useRef<HTMLDivElement>(null);
   const featuresSectionRef = useRef<HTMLDivElement>(null);
@@ -277,10 +277,10 @@ export default function Home() {
     const handleResize = () => {
       if (window.innerWidth < 768) {
         setToiletPosition("25%");
-        setHeroTextPosition("38%");
+        setHeroTextPosition("33%");
       } else {
         setToiletPosition("13%");
-        setHeroTextPosition("15%");
+        setHeroTextPosition("13%");
       }
     };
     
