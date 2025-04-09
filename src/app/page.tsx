@@ -12,9 +12,14 @@ export default function Home() {
   const [bottomEmail, setBottomEmail] = useState("");
   const [bottomSubscribed, setBottomSubscribed] = useState(false);
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(0);
+  const [statsCounted, setStatsCounted] = useState(false);
+  const [restroomCount, setRestroomCount] = useState(0);
+  const [citiesCount, setCitiesCount] = useState(0);
+  const [codesCount, setCodesCount] = useState(0);
 
   const heroTextRef = useRef<HTMLDivElement>(null);
   const featuresSectionRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
 
   const handleBottomNotifyMe = async () => {
     try {
@@ -137,6 +142,56 @@ export default function Home() {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
+
+  useEffect(() => {
+    // Only run animations if browser supports it and not in reduced motion mode
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (statsRef.current && !prefersReducedMotion && !statsCounted) {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          // Start animation when section is visible
+          animateStats();
+          observer.disconnect();
+        }
+      }, { threshold: 0.2 });
+      
+      observer.observe(statsRef.current);
+    }
+    
+    return () => {
+      // Cleanup will be handled by observer.disconnect() when triggered
+    };
+  }, [statsCounted]);
+  
+  const animateStats = () => {
+    if (statsCounted) return; // Don't animate again if already done
+    
+    setStatsCounted(true);
+    
+    // Duration in milliseconds
+    const duration = 2000;
+    const startTime = Date.now();
+    const endValues = { restrooms: 60000, cities: 4500, codes: 10000 };
+    
+    const updateCounts = () => {
+      const elapsedTime = Date.now() - startTime;
+      const progress = Math.min(elapsedTime / duration, 1);
+      
+      // Use easeOutQuart easing function for a nice effect
+      const easeProgress = 1 - Math.pow(1 - progress, 4);
+      
+      setRestroomCount(Math.floor(endValues.restrooms * easeProgress));
+      setCitiesCount(Math.floor(endValues.cities * easeProgress));
+      setCodesCount(Math.floor(endValues.codes * easeProgress));
+      
+      if (progress < 1) {
+        requestAnimationFrame(updateCounts);
+      }
+    };
+    
+    requestAnimationFrame(updateCounts);
+  };
 
   return (
     <div className="min-h-screen text-white relative">
@@ -276,7 +331,7 @@ export default function Home() {
       </section>
 
       {/* STATS SECTION */}
-      <section className="relative z-30 py-20 px-6 sm:px-12 bg-white text-gray-900">
+      <section className="relative z-30 py-20 px-6 sm:px-12 bg-white text-gray-900" ref={statsRef}>
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
             <div className="md:w-1/2">
@@ -296,15 +351,15 @@ export default function Home() {
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <div className="bg-blue-100 px-6 py-4 rounded-lg text-center">
-                  <span className="block text-3xl font-bold text-blue-600">60,000+</span>
+                  <span className="block text-3xl font-bold text-blue-600">{restroomCount.toLocaleString()}+</span>
                   <span className="text-sm text-gray-600">Verified Restrooms</span>
                 </div>
                 <div className="bg-blue-100 px-6 py-4 rounded-lg text-center">
-                  <span className="block text-3xl font-bold text-blue-600">4,500+</span>
+                  <span className="block text-3xl font-bold text-blue-600">{citiesCount.toLocaleString()}+</span>
                   <span className="text-sm text-gray-600">Cities Covered</span>
                 </div>
                 <div className="bg-blue-100 px-6 py-4 rounded-lg text-center">
-                  <span className="block text-3xl font-bold text-blue-600">10,000+</span>
+                  <span className="block text-3xl font-bold text-blue-600">{codesCount.toLocaleString()}+</span>
                   <span className="text-sm text-gray-600">Restroom Codes</span>
                 </div>
               </div>
