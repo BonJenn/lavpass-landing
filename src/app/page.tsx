@@ -277,10 +277,10 @@ export default function Home() {
     const handleResize = () => {
       if (window.innerWidth < 768) {
         setToiletPosition("30%");
-        setHeroTextPosition("40%");
+        setHeroTextPosition("32%");
       } else {
         setToiletPosition("13%");
-        setHeroTextPosition("11%");
+        setHeroTextPosition("7%");
       }
     };
     
