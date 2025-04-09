@@ -287,7 +287,7 @@ export default function Home() {
           className="absolute z-0 w-full text-center"
           ref={heroTextRef}
           style={{
-            top: '6%',
+            top: '15%',
             left: '50%',
             transform: 'translate(-50%, 0)'
           }}
@@ -338,7 +338,8 @@ export default function Home() {
               waitlistSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            Coming Spring 2025 to iPhone - Click here to join waitlist
+            Coming Spring 2025 to iPhone<br />
+            Click here to join waitlist
           </div>
         </div>
       </section>
