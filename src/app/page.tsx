@@ -286,7 +286,7 @@ export default function Home() {
           className="absolute z-0 w-full text-center"
           ref={heroTextRef}
           style={{
-            top: '6%',
+            top: '15%',
             left: '50%',
             transform: 'translate(-50%, -50%)'
           }}
@@ -300,7 +300,7 @@ export default function Home() {
         <div
           className="toilet absolute z-10 left-1/2"
           style={{ 
-            top: "10%", 
+            top: "25%", 
             width: "100%",
             maxWidth: "1600px",
             height: "auto",
