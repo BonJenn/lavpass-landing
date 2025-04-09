@@ -38,16 +38,11 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const threshold = 400;
-      const effectiveScroll = Math.min(scrollPosition, threshold);
-      const toiletScrollOffset = effectiveScroll * 0.5;
-
+      
+      // Remove toilet animation completely by setting a fixed position
       const toilet = document.querySelector(".toilet") as HTMLElement | null;
-      // Only apply toilet animation on desktop (not mobile)
-      if (toilet && window.innerWidth >= 768) {
-        toilet.style.transform = `translate(-50%, calc(0px - ${toiletScrollOffset}px))`;
-      } else if (toilet && window.innerWidth < 768) {
-        // Keep toilet in fixed position on mobile
+      if (toilet) {
+        // Keep toilet in fixed position on all devices
         toilet.style.transform = `translate(-50%, 0)`;
       }
 
