@@ -286,12 +286,12 @@ export default function Home() {
           className="absolute z-0 w-full text-center"
           ref={heroTextRef}
           style={{
-            top: '15%',
+            top: '6%',
             left: '50%',
-            transform: 'translate(-50%, -50%)'
+            transform: 'translate(-50%, 0)'
           }}
         >
-          <div className="max-w-[800px] mx-auto px-4">
+          <div className="max-w-[800px] mx-auto px-4 mb-[20vh] md:mb-0">
             <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold">Your Throne Awaits.</h1>
             <p className="mt-1 sm:mt-3 text-base sm:text-lg lg:text-2xl">Discover the best public restrooms near you.</p>
           </div>
@@ -300,7 +300,7 @@ export default function Home() {
         <div
           className="toilet absolute z-10 left-1/2"
           style={{ 
-            top: "25%", 
+            top: "13%", 
             width: "100%",
             maxWidth: "1600px",
             height: "auto",
@@ -315,7 +315,7 @@ export default function Home() {
             alt="Toilet"
             unoptimized
             fill
-            className="object-contain max-h-[50vh] md:max-h-none w-full md:mt-[-10%]"
+            className="object-contain max-h-[50vh] md:max-h-none w-full md:mt-0"
           />
         </div>
       </section>
