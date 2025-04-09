@@ -277,7 +277,7 @@ export default function Home() {
     const handleResize = () => {
       if (window.innerWidth < 768) {
         setToiletPosition("25%");
-        setHeroTextPosition("28%");
+        setHeroTextPosition("22%");
       } else {
         setToiletPosition("13%");
         setHeroTextPosition("11%");
@@ -309,7 +309,7 @@ export default function Home() {
       {/* HERO */}
       <section className="relative z-10 px-6 md:px-12 min-h-[45vh] md:min-h-[100vh] pt-[5vh] md:pt-[5vh] pb-0 md:pb-10 overflow-hidden">
         <div 
-          className="absolute z-0 w-full text-center"
+          className="absolute z-20 w-full text-center"
           ref={heroTextRef}
           style={{
             top: heroTextPosition,
