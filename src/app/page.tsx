@@ -17,6 +17,7 @@ export default function Home() {
   const [citiesCount, setCitiesCount] = useState(0);
   const [codesCount, setCodesCount] = useState(0);
   const [toiletPosition, setToiletPosition] = useState("13%");
+  const [heroTextPosition, setHeroTextPosition] = useState("15%");
 
   const heroTextRef = useRef<HTMLDivElement>(null);
   const featuresSectionRef = useRef<HTMLDivElement>(null);
@@ -271,13 +272,15 @@ export default function Home() {
     }
   };
 
-  // Handle responsive toilet positioning
+  // Handle responsive positioning
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
         setToiletPosition("25%");
+        setHeroTextPosition("38%");
       } else {
         setToiletPosition("13%");
+        setHeroTextPosition("15%");
       }
     };
     
@@ -309,7 +312,7 @@ export default function Home() {
           className="absolute z-0 w-full text-center"
           ref={heroTextRef}
           style={{
-            top: '15%',
+            top: heroTextPosition,
             left: '50%',
             transform: 'translate(-50%, 0)'
           }}
@@ -519,7 +522,7 @@ export default function Home() {
 
       {/* STAY UPDATED */}
       <section className="relative z-30 bg-blue-100 text-blue-900 py-20 px-8 text-center shadow-lg rounded-lg mx-4 sm:mx-8 my-8" ref={waitlistSectionRef}>
-        <h2 className="text-4xl font-bold mb-6">Join Waitlist <span className="inline-block mx-2">💩</span><span className="inline-block">😍</span></h2>
+        <h2 className="text-4xl font-bold mb-6">Join Waitlist<br /><span className="inline-block mx-2">💩</span><span className="inline-block">😍</span></h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           LavPass is launching Spring 2025. Sign up now to be the first to know when we&apos;ve launched!
         </p>
