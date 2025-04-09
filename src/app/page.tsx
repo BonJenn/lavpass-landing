@@ -147,50 +147,114 @@ export default function Home() {
     // Only run animations if browser supports it and not in reduced motion mode
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
-    if (statsRef.current && !prefersReducedMotion && !statsCounted) {
-      const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          // Start animation when section is visible
-          animateStats();
-          observer.disconnect();
-        }
-      }, { threshold: 0.2 });
-      
-      observer.observe(statsRef.current);
+    // Force initial render of numbers for mobile (in case animation fails)
+    if (!statsCounted) {
+      // Set immediately to at least 80% of final value to ensure numbers are visible
+      setRestroomCount(48000);  // 80% of 60000
+      setCitiesCount(3600);     // 80% of 4500
+      setCodesCount(8000);      // 80% of 10000
     }
     
-    return () => {
-      // Cleanup will be handled by observer.disconnect() when triggered
-    };
+    // Mobile-friendly animation with better error handling
+    try {
+      if (statsRef.current && !prefersReducedMotion && !statsCounted) {
+        const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+          if (entries[0].isIntersecting) {
+            try {
+              // Start animation when section is visible
+              animateStats();
+            } catch (error) {
+              console.error("Stats animation error:", error);
+              // Fall back to static numbers on error
+              setStatsCounted(true);
+              setRestroomCount(60000);
+              setCitiesCount(4500);
+              setCodesCount(10000);
+            }
+            observer.disconnect();
+          }
+        };
+        
+        const observer = new IntersectionObserver(handleIntersection, { 
+          threshold: 0.2,
+          rootMargin: "0px" 
+        });
+        
+        observer.observe(statsRef.current);
+        
+        return () => {
+          if (observer) {
+            observer.disconnect();
+          }
+        };
+      }
+    } catch (error) {
+      console.error("Observer setup error:", error);
+      // Fall back to static numbers on error
+      setStatsCounted(true);
+      setRestroomCount(60000);
+      setCitiesCount(4500);
+      setCodesCount(10000);
+    }
   }, [statsCounted]);
   
   const animateStats = () => {
     if (statsCounted) return; // Don't animate again if already done
     
-    setStatsCounted(true);
-    
-    // Duration in milliseconds
-    const duration = 2000;
-    const startTime = Date.now();
-    const endValues = { restrooms: 60000, cities: 4500, codes: 10000 };
-    
-    const updateCounts = () => {
-      const elapsedTime = Date.now() - startTime;
-      const progress = Math.min(elapsedTime / duration, 1);
+    try {
+      setStatsCounted(true);
       
-      // Use easeOutQuart easing function for a nice effect
-      const easeProgress = 1 - Math.pow(1 - progress, 4);
+      // Duration in milliseconds
+      const duration = 2000;
+      const startTime = Date.now();
+      const endValues = { restrooms: 60000, cities: 4500, codes: 10000 };
       
-      setRestroomCount(Math.floor(endValues.restrooms * easeProgress));
-      setCitiesCount(Math.floor(endValues.cities * easeProgress));
-      setCodesCount(Math.floor(endValues.codes * easeProgress));
+      // Start from current values rather than zero
+      const startValues = {
+        restrooms: restroomCount, 
+        cities: citiesCount, 
+        codes: codesCount
+      };
       
-      if (progress < 1) {
-        requestAnimationFrame(updateCounts);
-      }
-    };
-    
-    requestAnimationFrame(updateCounts);
+      const updateCounts = () => {
+        try {
+          const elapsedTime = Date.now() - startTime;
+          const progress = Math.min(elapsedTime / duration, 1);
+          
+          // Use easeOutQuart easing function for a nice effect
+          const easeProgress = 1 - Math.pow(1 - progress, 4);
+          
+          // Calculate new values based on progress
+          const newRestroomCount = Math.floor(startValues.restrooms + (endValues.restrooms - startValues.restrooms) * easeProgress);
+          const newCitiesCount = Math.floor(startValues.cities + (endValues.cities - startValues.cities) * easeProgress);
+          const newCodesCount = Math.floor(startValues.codes + (endValues.codes - startValues.codes) * easeProgress);
+          
+          // Update state
+          setRestroomCount(newRestroomCount);
+          setCitiesCount(newCitiesCount);
+          setCodesCount(newCodesCount);
+          
+          if (progress < 1) {
+            window.requestAnimationFrame(updateCounts);
+          }
+        } catch (error) {
+          console.error("Animation frame error:", error);
+          // Set final values if animation fails
+          setRestroomCount(endValues.restrooms);
+          setCitiesCount(endValues.cities);
+          setCodesCount(endValues.codes);
+        }
+      };
+      
+      // Start the animation
+      window.requestAnimationFrame(updateCounts);
+    } catch (error) {
+      console.error("Animation initialization error:", error);
+      // Set final values if animation fails to start
+      setRestroomCount(60000);
+      setCitiesCount(4500);
+      setCodesCount(10000);
+    }
   };
 
   return (
