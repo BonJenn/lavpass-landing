@@ -276,8 +276,8 @@ export default function Home() {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
-        setToiletPosition("25%");
-        setHeroTextPosition("22%");
+        setToiletPosition("30%");
+        setHeroTextPosition("40%");
       } else {
         setToiletPosition("13%");
         setHeroTextPosition("11%");
@@ -359,7 +359,7 @@ export default function Home() {
         
         <div className="mt-8 flex justify-center">
           <div 
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transform transition hover:scale-105 duration-200 cursor-pointer text-xl"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transform transition hover:scale-105 duration-200 cursor-pointer text-base sm:text-lg md:text-xl"
             onClick={() => {
               waitlistSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
             }}
