@@ -315,7 +315,7 @@ export default function Home() {
             alt="Toilet"
             unoptimized
             fill
-            className="object-contain max-h-[50vh] md:max-h-none w-full"
+            className="object-contain max-h-[50vh] md:max-h-none w-full md:mt-[-10%]"
           />
         </div>
       </section>
@@ -331,15 +331,9 @@ export default function Home() {
         </p>
         
         <div className="mt-8 flex justify-center">
-          <a href="#" className="transform transition hover:scale-105 duration-200">
-            <Image 
-              src="/images/app_store_logo.png"
-              alt="Download on the App Store"
-              width={200}
-              height={60}
-              className="rounded-lg"
-            />
-          </a>
+          <div className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transform transition hover:scale-105 duration-200 cursor-pointer text-xl">
+            Coming Spring 2025 to iPhone
+          </div>
         </div>
       </section>
 
