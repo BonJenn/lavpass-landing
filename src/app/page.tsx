@@ -20,6 +20,7 @@ export default function Home() {
   const heroTextRef = useRef<HTMLDivElement>(null);
   const featuresSectionRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
+  const waitlistSectionRef = useRef<HTMLDivElement>(null);
 
   const handleBottomNotifyMe = async () => {
     try {
@@ -331,8 +332,13 @@ export default function Home() {
         </p>
         
         <div className="mt-8 flex justify-center">
-          <div className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transform transition hover:scale-105 duration-200 cursor-pointer text-xl">
-            Coming Spring 2025 to iPhone
+          <div 
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transform transition hover:scale-105 duration-200 cursor-pointer text-xl"
+            onClick={() => {
+              waitlistSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            Coming Spring 2025 to iPhone - Click here to join waitlist
           </div>
         </div>
       </section>
@@ -488,7 +494,7 @@ export default function Home() {
       </section>
 
       {/* STAY UPDATED */}
-      <section className="relative z-30 bg-blue-100 text-blue-900 py-20 px-8 text-center shadow-lg rounded-lg mx-4 sm:mx-8 my-8">
+      <section className="relative z-30 bg-blue-100 text-blue-900 py-20 px-8 text-center shadow-lg rounded-lg mx-4 sm:mx-8 my-8" ref={waitlistSectionRef}>
         <h2 className="text-4xl font-bold mb-6">Join Waitlist <span className="inline-block mx-2">💩</span><span className="inline-block">😍</span></h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           LavPass is launching Spring 2025. Sign up now to be the first to know when we've launched!
