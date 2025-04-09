@@ -146,18 +146,29 @@ export default function Home() {
   useEffect(() => {
     // Only run animations if browser supports it and not in reduced motion mode
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     
-    // Force initial render of numbers for mobile (in case animation fails)
-    if (!statsCounted) {
+    // For mobile, just set the final values immediately without animation
+    if (isMobile && !statsCounted) {
+      setStatsCounted(true);
+      setRestroomCount(60000);
+      setCitiesCount(4500);
+      setCodesCount(10000);
+      return; // Exit early, no animation needed
+    }
+    
+    // For desktop, continue with animation
+    // Force initial render of numbers for desktop (in case animation fails)
+    if (!statsCounted && !isMobile) {
       // Set immediately to at least 80% of final value to ensure numbers are visible
       setRestroomCount(48000);  // 80% of 60000
       setCitiesCount(3600);     // 80% of 4500
       setCodesCount(8000);      // 80% of 10000
     }
     
-    // Mobile-friendly animation with better error handling
+    // Desktop-only animation with error handling
     try {
-      if (statsRef.current && !prefersReducedMotion && !statsCounted) {
+      if (statsRef.current && !prefersReducedMotion && !statsCounted && !isMobile) {
         const handleIntersection = (entries: IntersectionObserverEntry[]) => {
           if (entries[0].isIntersecting) {
             try {
