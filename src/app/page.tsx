@@ -16,11 +16,13 @@ export default function Home() {
   const [restroomCount, setRestroomCount] = useState(0);
   const [citiesCount, setCitiesCount] = useState(0);
   const [codesCount, setCodesCount] = useState(0);
+  const [toiletPosition, setToiletPosition] = useState("13%");
 
   const heroTextRef = useRef<HTMLDivElement>(null);
   const featuresSectionRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const waitlistSectionRef = useRef<HTMLDivElement>(null);
+  const toiletRef = useRef<HTMLDivElement>(null);
 
   const handleBottomNotifyMe = async () => {
     try {
@@ -269,6 +271,26 @@ export default function Home() {
     }
   };
 
+  // Handle responsive toilet positioning
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setToiletPosition("25%");
+      } else {
+        setToiletPosition("13%");
+      }
+    };
+    
+    // Set initial position
+    handleResize();
+    
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="min-h-screen text-white relative">
       {/* BEAUTIFUL BACKGROUND (Gradient + Background Image) */}
@@ -299,9 +321,10 @@ export default function Home() {
         </div>
 
         <div
+          ref={toiletRef}
           className="toilet absolute z-10 left-1/2"
           style={{ 
-            top: "13%", 
+            top: toiletPosition, 
             width: "100%",
             maxWidth: "1600px",
             height: "auto",
