@@ -497,7 +497,7 @@ export default function Home() {
       <section className="relative z-30 bg-blue-100 text-blue-900 py-20 px-8 text-center shadow-lg rounded-lg mx-4 sm:mx-8 my-8" ref={waitlistSectionRef}>
         <h2 className="text-4xl font-bold mb-6">Join Waitlist <span className="inline-block mx-2">💩</span><span className="inline-block">😍</span></h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
-          LavPass is launching Spring 2025. Sign up now to be the first to know when we've launched!
+          LavPass is launching Spring 2025. Sign up now to be the first to know when we&apos;ve launched!
         </p>
         {!bottomSubscribed ? (
           <div className="flex flex-col sm:flex-row justify-center mt-10 max-w-xl mx-auto">
