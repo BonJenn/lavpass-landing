@@ -489,9 +489,9 @@ export default function Home() {
 
       {/* STAY UPDATED */}
       <section className="relative z-30 bg-blue-100 text-blue-900 py-20 px-8 text-center shadow-lg rounded-lg mx-4 sm:mx-8 my-8">
-        <h2 className="text-4xl font-bold mb-6">Stay Updated <span className="inline-block mx-2">💩</span><span className="inline-block">😍</span></h2>
+        <h2 className="text-4xl font-bold mb-6">Join Waitlist <span className="inline-block mx-2">💩</span><span className="inline-block">😍</span></h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
-          Sign up for our newsletter to receive the latest updates and news about LavPass.
+          LavPass is launching Spring 2025. Sign up now to be the first to know when we've launched!
         </p>
         {!bottomSubscribed ? (
           <div className="flex flex-col sm:flex-row justify-center mt-10 max-w-xl mx-auto">
@@ -506,13 +506,13 @@ export default function Home() {
               className="bg-blue-600 text-white p-3 rounded-lg sm:rounded-l-none sm:rounded-r-lg hover:bg-blue-700 transition transform hover:scale-105 duration-200 w-full sm:w-auto sm:px-6"
               onClick={handleBottomNotifyMe}
             >
-              Subscribe
+              Join Waitlist
             </button>
           </div>
         ) : (
           <p className="mt-10 text-lg bg-blue-600 text-white px-6 py-4 rounded-lg transition max-w-xl mx-auto shadow-md">
-            <span className="block font-semibold">Thank you for subscribing!</span>
-            We&apos;ll notify you as soon as our app is available.
+            <span className="block font-semibold">Thank you for joining our waitlist!</span>
+            We&apos;ll notify you as soon as LavPass launches in Spring 2025.
           </p>
         )}
       </section>
