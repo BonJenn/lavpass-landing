@@ -357,15 +357,15 @@ export default function Home() {
           Never get caught without a bathroom again. LavPass helps you find clean, accessible restrooms with verified entry codes wherever you go.
         </p>
         
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 flex justify-center flex-col items-center">
+          <p className="mb-4 text-base sm:text-lg md:text-xl">Coming Spring 2025 to iPhone</p>
           <div 
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transform transition hover:scale-105 duration-200 cursor-pointer text-base sm:text-lg md:text-xl"
             onClick={() => {
               waitlistSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            Coming Spring 2025 to iPhone<br />
-            Click here to join waitlist
+            Join the Waitlist Now!
           </div>
         </div>
       </section>
