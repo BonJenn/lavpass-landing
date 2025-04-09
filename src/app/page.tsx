@@ -344,7 +344,7 @@ export default function Home() {
               />
             </div>
             <div className="md:w-1/2 text-center md:text-left">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">60,000+ Verified Restrooms</h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">Verified Restrooms All Over the US</h2>
               <p className="text-lg md:text-xl">
                 LavPass has the largest database of verified public restrooms across the United States, 
                 with real-time access codes and user reviews.
@@ -419,8 +419,8 @@ export default function Home() {
       </section>
 
       {/* STAY UPDATED */}
-      <section className="relative z-30 bg-black text-white py-20 px-8 text-center shadow-lg rounded-lg mx-4 sm:mx-8 my-8">
-        <h2 className="text-4xl font-bold mb-6">Stay Updated</h2>
+      <section className="relative z-30 bg-blue-100 text-blue-900 py-20 px-8 text-center shadow-lg rounded-lg mx-4 sm:mx-8 my-8">
+        <h2 className="text-4xl font-bold mb-6">Stay Updated <span className="inline-block mx-2">💩</span><span className="inline-block">😍</span></h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Sign up for our newsletter to receive the latest updates and news about LavPass.
         </p>
@@ -429,19 +429,19 @@ export default function Home() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="p-3 rounded-lg sm:rounded-l-lg sm:rounded-r-none border-2 border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition text-black w-full mb-3 sm:mb-0"
+              className="p-3 rounded-lg sm:rounded-l-lg sm:rounded-r-none border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition text-black w-full mb-3 sm:mb-0"
               value={bottomEmail}
               onChange={(e) => setBottomEmail(e.target.value)}
             />
             <button
-              className="bg-blue-500 text-white p-3 rounded-lg sm:rounded-l-none sm:rounded-r-lg hover:bg-blue-600 transition transform hover:scale-105 duration-200 w-full sm:w-auto sm:px-6"
+              className="bg-blue-600 text-white p-3 rounded-lg sm:rounded-l-none sm:rounded-r-lg hover:bg-blue-700 transition transform hover:scale-105 duration-200 w-full sm:w-auto sm:px-6"
               onClick={handleBottomNotifyMe}
             >
               Subscribe
             </button>
           </div>
         ) : (
-          <p className="mt-10 text-lg bg-blue-900 text-white px-6 py-4 rounded-lg transition max-w-xl mx-auto shadow-md">
+          <p className="mt-10 text-lg bg-blue-600 text-white px-6 py-4 rounded-lg transition max-w-xl mx-auto shadow-md">
             <span className="block font-semibold">Thank you for subscribing!</span>
             We&apos;ll notify you as soon as our app is available.
           </p>
