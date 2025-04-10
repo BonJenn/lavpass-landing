@@ -11,19 +11,32 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Home() {
   const [bottomEmail, setBottomEmail] = useState("");
   const [bottomSubscribed, setBottomSubscribed] = useState(false);
+  const [heroEmail, setHeroEmail] = useState("");
+  const [heroSubscribed, setHeroSubscribed] = useState(false);
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(0);
   const [statsCounted, setStatsCounted] = useState(false);
   const [restroomCount, setRestroomCount] = useState(0);
   const [citiesCount, setCitiesCount] = useState(0);
   const [codesCount, setCodesCount] = useState(0);
   const [toiletPosition, setToiletPosition] = useState("13%");
-  const [heroTextPosition, setHeroTextPosition] = useState("13%");
+  const [heroTextPosition, setHeroTextPosition] = useState("7%");
 
   const heroTextRef = useRef<HTMLDivElement>(null);
   const featuresSectionRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const waitlistSectionRef = useRef<HTMLDivElement>(null);
   const toiletRef = useRef<HTMLDivElement>(null);
+
+  const handleHeroNotifyMe = async () => {
+    try {
+      // Just set the state to show the success message for now
+      setHeroSubscribed(true);
+      console.log("Email submitted from hero:", heroEmail);
+    } catch (error) {
+      console.error(error);
+      alert("There was an error subscribing. Please try again later.");
+    }
+  };
 
   const handleBottomNotifyMe = async () => {
     try {
@@ -358,15 +371,30 @@ export default function Home() {
         </p>
         
         <div className="mt-8 flex justify-center flex-col items-center">
-          <p className="mb-4 text-base sm:text-lg md:text-xl">Coming Spring 2025 to iPhone</p>
-          <div 
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transform transition hover:scale-105 duration-200 cursor-pointer text-base sm:text-lg md:text-xl"
-            onClick={() => {
-              waitlistSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            Join the Waitlist Now!
-          </div>
+          <p className="mb-4 text-base sm:text-lg md:text-xl">Coming Spring 2025 to iPhone. Join the waitlist!</p>
+          
+          {!heroSubscribed ? (
+            <div className="flex flex-col sm:flex-row justify-center max-w-xl w-full">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="p-3 rounded-lg sm:rounded-l-lg sm:rounded-r-none border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition text-black w-full mb-3 sm:mb-0"
+                value={heroEmail}
+                onChange={(e) => setHeroEmail(e.target.value)}
+              />
+              <button
+                className="bg-blue-600 text-white p-3 rounded-lg sm:rounded-l-none sm:rounded-r-lg hover:bg-blue-700 transition transform hover:scale-105 duration-200 w-full sm:w-auto sm:px-6"
+                onClick={handleHeroNotifyMe}
+              >
+                Join Waitlist
+              </button>
+            </div>
+          ) : (
+            <p className="mt-4 text-lg bg-blue-600 text-white px-6 py-4 rounded-lg transition max-w-xl mx-auto shadow-md">
+              <span className="block font-semibold">Thank you for joining our waitlist!</span>
+              We&apos;ll notify you as soon as LavPass launches in Spring 2025.
+            </p>
+          )}
         </div>
       </section>
 
