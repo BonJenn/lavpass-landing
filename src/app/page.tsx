@@ -369,7 +369,6 @@ export default function Home() {
 
       {/* ABOUT */}
       <section className="relative z-20 mt-3 sm:-mt-16 md:-mt-32 py-10 bg-black text-white px-6 text-center shadow-lg rounded-lg">
-        <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-4">Discover Loos Near You</h1>
         <p className="mt-6 text-lg mx-auto max-w-xl">
           Never get caught without a bathroom again. LavPass helps you find clean, accessible restrooms with verified entry codes wherever you go.
         </p>
