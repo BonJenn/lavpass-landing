@@ -29,9 +29,13 @@ export default function Home() {
 
   const handleHeroNotifyMe = async () => {
     try {
-      // Just set the state to show the success message for now
+      const res = await fetch("/api/mailchimp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: heroEmail }),
+      });
+      if (!res.ok) throw new Error("Failed to subscribe.");
       setHeroSubscribed(true);
-      console.log("Email submitted from hero:", heroEmail);
     } catch (error) {
       console.error(error);
       alert("There was an error subscribing. Please try again later.");
@@ -371,30 +375,34 @@ export default function Home() {
         </p>
         
         <div className="mt-8 flex justify-center flex-col items-center">
-          <p className="mb-4 text-base sm:text-lg md:text-xl">Coming Spring 2025 to iPhone. Join the waitlist!</p>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">Coming Spring 2025 to iPhone</h2>
           
-          {!heroSubscribed ? (
-            <div className="flex flex-col sm:flex-row justify-center max-w-xl w-full">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="p-3 rounded-lg sm:rounded-l-lg sm:rounded-r-none border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition text-black w-full mb-3 sm:mb-0"
-                value={heroEmail}
-                onChange={(e) => setHeroEmail(e.target.value)}
-              />
-              <button
-                className="bg-blue-600 text-white p-3 rounded-lg sm:rounded-l-none sm:rounded-r-lg hover:bg-blue-700 transition transform hover:scale-105 duration-200 w-full sm:w-auto sm:px-6"
-                onClick={handleHeroNotifyMe}
-              >
-                Join Waitlist
-              </button>
-            </div>
-          ) : (
-            <p className="mt-4 text-lg bg-blue-600 text-white px-6 py-4 rounded-lg transition max-w-xl mx-auto shadow-md">
-              <span className="block font-semibold">Thank you for joining our waitlist!</span>
-              We&apos;ll notify you as soon as LavPass launches in Spring 2025.
-            </p>
-          )}
+          <div className="bg-blue-900/30 border-2 border-blue-500/30 rounded-xl p-6 w-full max-w-xl mx-auto shadow-lg">
+            <p className="text-lg font-semibold mb-4">🚨 Join the waitlist to be notified when we launch! 🚨</p>
+            
+            {!heroSubscribed ? (
+              <div className="flex flex-col sm:flex-row justify-center w-full">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="p-4 rounded-lg sm:rounded-l-lg sm:rounded-r-none border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition text-black w-full mb-3 sm:mb-0 text-lg"
+                  value={heroEmail}
+                  onChange={(e) => setHeroEmail(e.target.value)}
+                />
+                <button
+                  className="bg-blue-600 text-white p-4 rounded-lg sm:rounded-l-none sm:rounded-r-lg hover:bg-blue-700 transition transform hover:scale-105 duration-200 w-full sm:w-auto sm:px-8 font-bold text-lg"
+                  onClick={handleHeroNotifyMe}
+                >
+                  Join Waitlist
+                </button>
+              </div>
+            ) : (
+              <p className="mt-4 text-lg bg-blue-600 text-white px-6 py-4 rounded-lg transition shadow-md">
+                <span className="block font-semibold">Thank you for joining our waitlist!</span>
+                We&apos;ll notify you as soon as LavPass launches in Spring 2025.
+              </p>
+            )}
+          </div>
         </div>
       </section>
 
