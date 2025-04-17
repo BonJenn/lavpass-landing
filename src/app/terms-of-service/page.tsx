@@ -119,6 +119,7 @@ export default function TermsOfService() {
           <div className="flex flex-wrap justify-center">
             <Link href="/terms-of-service" className="text-sm mx-3 my-1 hover:underline cursor-pointer">Terms of Service</Link>
             <Link href="/privacy-policy" className="text-sm mx-3 my-1 hover:underline cursor-pointer">Privacy Policy</Link>
+            <Link href="/end-user-license-agreement" className="text-sm mx-3 my-1 hover:underline cursor-pointer">User Agreement</Link>
             <a href="#" className="text-sm mx-3 my-1 hover:underline cursor-pointer">Contact Us</a>
             <Link href="/about" className="text-sm mx-3 my-1 hover:underline cursor-pointer">About</Link>
           </div>
