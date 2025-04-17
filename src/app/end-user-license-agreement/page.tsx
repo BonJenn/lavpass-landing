@@ -15,7 +15,7 @@ export default function EULA() {
       {/* Content Section */}
       <section className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold mb-8 text-center">End User License Agreement</h1>
-        <h2 className="text-center mb-6">This End User License Agreement ("EULA") is a legal agreement between you and LavPass governing your use of the LavPass mobile application.</h2>
+        <h2 className="text-center mb-6">This End User License Agreement (&quot;EULA&quot;) is a legal agreement between you and LavPass governing your use of the LavPass mobile application.</h2>
         
         <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg shadow-lg text-white">
           <h2 className="text-2xl font-semibold mb-4">1. License Grant</h2>
@@ -30,7 +30,7 @@ export default function EULA() {
 
           <h2 className="text-2xl font-semibold mb-4">3. User Content</h2>
           <p className="mb-6">
-            The App allows you to submit content including but not limited to restroom locations and access codes ("User Content"). You retain ownership of your User Content, but grant LavPass a worldwide, royalty-free, perpetual, irrevocable, non-exclusive license to use, reproduce, modify, adapt, publish, translate, distribute, and display such User Content in connection with the App.
+            The App allows you to submit content including but not limited to restroom locations and access codes (&quot;User Content&quot;). You retain ownership of your User Content, but grant LavPass a worldwide, royalty-free, perpetual, irrevocable, non-exclusive license to use, reproduce, modify, adapt, publish, translate, distribute, and display such User Content in connection with the App.
           </p>
 
           <h2 className="text-2xl font-semibold mb-4">4. Privacy</h2>
@@ -45,7 +45,7 @@ export default function EULA() {
 
           <h2 className="text-2xl font-semibold mb-4">6. Disclaimer of Warranties</h2>
           <p className="mb-6">
-            THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND. TO THE FULLEST EXTENT PERMITTED BY LAW, LAVPASS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+            THE APP IS PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; WITHOUT WARRANTIES OF ANY KIND. TO THE FULLEST EXTENT PERMITTED BY LAW, LAVPASS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
           </p>
 
           <h2 className="text-2xl font-semibold mb-4">7. Limitation of Liability</h2>
@@ -65,7 +65,7 @@ export default function EULA() {
 
           <h2 className="text-2xl font-semibold mb-4">10. Changes to this EULA</h2>
           <p className="mb-6">
-            LavPass reserves the right to modify this EULA at any time. We will notify you of any changes by posting the new EULA on this page and updating the "Last Updated" date. You are advised to review this EULA periodically for any changes.
+            LavPass reserves the right to modify this EULA at any time. We will notify you of any changes by posting the new EULA on this page and updating the &quot;Last Updated&quot; date. You are advised to review this EULA periodically for any changes.
           </p>
 
           <h2 className="text-2xl font-semibold mb-4">11. Contact Information</h2>
