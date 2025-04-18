@@ -369,38 +369,30 @@ export default function Home() {
 
       {/* ABOUT */}
       <section className="relative z-20 mt-3 sm:-mt-16 md:-mt-32 py-10 bg-black text-white px-6 text-center shadow-lg rounded-lg">
-        <p className="mt-6 text-lg mx-auto max-w-xl">
+        <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-6">Discover Loos Near You</h1>
+        <p className="text-lg mx-auto max-w-xl mb-10">
           Never get caught without a bathroom again. LavPass helps you find clean, accessible restrooms with verified entry codes wherever you go.
         </p>
         
-        <div className="mt-8 flex justify-center flex-col items-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">Coming Spring 2025 to iPhone</h2>
-          
-          <div className="bg-blue-900/30 border-2 border-blue-500/30 rounded-xl p-6 w-full max-w-xl mx-auto shadow-lg">
-            <p className="text-lg font-semibold mb-4">🚨 Join the waitlist to be notified when we launch! 🚨</p>
+        <div className="mt-8 flex justify-center">
+          <div className="w-full max-w-lg mx-auto flex flex-col items-center bg-gradient-to-br from-blue-900/50 to-blue-700/30 rounded-xl p-6 sm:p-8 shadow-lg border border-blue-500/20">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3">Available Now</h2>
+            <p className="text-base sm:text-lg text-blue-100 mb-6">Get it on iPhone now. Coming soon to Android.</p>
             
-            {!heroSubscribed ? (
-              <div className="flex flex-col sm:flex-row justify-center w-full">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="p-4 rounded-lg sm:rounded-l-lg sm:rounded-r-none border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition text-black w-full mb-3 sm:mb-0 text-lg"
-                  value={heroEmail}
-                  onChange={(e) => setHeroEmail(e.target.value)}
-                />
-                <button
-                  className="bg-blue-600 text-white p-4 rounded-lg sm:rounded-l-none sm:rounded-r-lg hover:bg-blue-700 transition transform hover:scale-105 duration-200 w-full sm:w-auto sm:px-8 font-bold text-lg"
-                  onClick={handleHeroNotifyMe}
-                >
-                  Join Waitlist
-                </button>
-              </div>
-            ) : (
-              <p className="mt-4 text-lg bg-blue-600 text-white px-6 py-4 rounded-lg transition shadow-md">
-                <span className="block font-semibold">Thank you for joining our waitlist!</span>
-                We&apos;ll notify you as soon as LavPass launches in Spring 2025.
-              </p>
-            )}
+            <a 
+              href="https://apps.apple.com/us/app/lavpass-restroom-finder/id6744234737"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transform transition hover:scale-105 duration-200 hover:shadow-xl"
+            >
+              <Image 
+                src="/images/app_store_logo.png" 
+                alt="Download on the App Store" 
+                width={200} 
+                height={67}
+                className="rounded-lg shadow-md"
+              />
+            </a>
           </div>
         </div>
       </section>
@@ -555,34 +547,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STAY UPDATED */}
-      <section className="relative z-30 bg-blue-100 text-blue-900 py-20 px-8 text-center shadow-lg rounded-lg mx-4 sm:mx-8 my-8" ref={waitlistSectionRef}>
-        <h2 className="text-4xl font-bold mb-6">Join Waitlist<br /><span className="inline-block mx-2">💩</span><span className="inline-block">😍</span></h2>
-        <p className="text-lg mb-8 max-w-2xl mx-auto">
-          LavPass is launching Spring 2025. Sign up now to be the first to know when we&apos;ve launched!
-        </p>
-        {!bottomSubscribed ? (
-          <div className="flex flex-col sm:flex-row justify-center mt-10 max-w-xl mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="p-3 rounded-lg sm:rounded-l-lg sm:rounded-r-none border-2 border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition text-black w-full mb-3 sm:mb-0"
-              value={bottomEmail}
-              onChange={(e) => setBottomEmail(e.target.value)}
-            />
-            <button
-              className="bg-blue-600 text-white p-3 rounded-lg sm:rounded-l-none sm:rounded-r-lg hover:bg-blue-700 transition transform hover:scale-105 duration-200 w-full sm:w-auto sm:px-6"
-              onClick={handleBottomNotifyMe}
-            >
-              Join Waitlist
-            </button>
+      {/* DOWNLOAD SECTION */}
+      <section className="relative z-30 bg-gradient-to-br from-[#445382] to-[#2a3356] text-white py-16 sm:py-20 px-8 text-center shadow-lg rounded-lg mx-4 sm:mx-8 my-8" ref={waitlistSectionRef}>
+        <div className="max-w-3xl mx-auto">
+          <div className="relative mb-8">
+            <h2 className="text-4xl sm:text-5xl font-bold">Get LavPass</h2>
+            <div className="flex justify-center mt-2 space-x-2">
+              <span className="text-3xl">💩</span>
+              <span className="text-3xl">😍</span>
+            </div>
           </div>
-        ) : (
-          <p className="mt-10 text-lg bg-blue-600 text-white px-6 py-4 rounded-lg transition max-w-xl mx-auto shadow-md">
-            <span className="block font-semibold">Thank you for joining our waitlist!</span>
-            We&apos;ll notify you as soon as LavPass launches in Spring 2025.
+          
+          <p className="text-lg mb-8 max-w-xl mx-auto">
+            Your go-to restroom companion - open the app and instantly find the nearest public restroom. 
+            Available now for iPhone.
           </p>
-        )}
+          
+          <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl w-full max-w-md mx-auto mb-4">
+            <a 
+              href="https://apps.apple.com/us/app/lavpass-restroom-finder/id6744234737"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block transform transition hover:scale-105 duration-300 w-full"
+            >
+              <Image 
+                src="/images/app_store_logo.png" 
+                alt="Download on the App Store" 
+                width={200} 
+                height={67}
+                className="shadow-lg mx-auto"
+              />
+            </a>
+            <p className="text-sm text-blue-100 mt-4">Free download • 17+ • 30.7 MB</p>
+          </div>
+        </div>
       </section>
 
       {/* FOOTER */}
@@ -626,7 +624,7 @@ export default function Home() {
           <div className="flex flex-wrap justify-center">
             <Link href="/terms-of-service" className="text-sm mx-3 my-1 hover:underline cursor-pointer">Terms of Service</Link>
             <Link href="/privacy-policy" className="text-sm mx-3 my-1 hover:underline cursor-pointer">Privacy Policy</Link>
-            <Link href="/end-user-license-agreement" className="text-sm mx-3 my-1 hover:underline cursor-pointer">EULA</Link>
+            <Link href="/end-user-license-agreement" className="text-sm mx-3 my-1 hover:underline cursor-pointer">User Agreement</Link>
             <a href="#" className="text-sm mx-3 my-1 hover:underline cursor-pointer">Contact Us</a>
             <Link href="/about" className="text-sm mx-3 my-1 hover:underline cursor-pointer">About</Link>
           </div>
