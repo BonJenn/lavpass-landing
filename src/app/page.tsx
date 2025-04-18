@@ -9,10 +9,6 @@ import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  const [bottomEmail, setBottomEmail] = useState("");
-  const [bottomSubscribed, setBottomSubscribed] = useState(false);
-  const [heroEmail, setHeroEmail] = useState("");
-  const [heroSubscribed, setHeroSubscribed] = useState(false);
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(0);
   const [statsCounted, setStatsCounted] = useState(false);
   const [restroomCount, setRestroomCount] = useState(0);
@@ -26,36 +22,6 @@ export default function Home() {
   const statsRef = useRef<HTMLDivElement>(null);
   const waitlistSectionRef = useRef<HTMLDivElement>(null);
   const toiletRef = useRef<HTMLDivElement>(null);
-
-  const handleHeroNotifyMe = async () => {
-    try {
-      const res = await fetch("/api/mailchimp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: heroEmail }),
-      });
-      if (!res.ok) throw new Error("Failed to subscribe.");
-      setHeroSubscribed(true);
-    } catch (error) {
-      console.error(error);
-      alert("There was an error subscribing. Please try again later.");
-    }
-  };
-
-  const handleBottomNotifyMe = async () => {
-    try {
-      const res = await fetch("/api/mailchimp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: bottomEmail }),
-      });
-      if (!res.ok) throw new Error("Failed to subscribe.");
-      setBottomSubscribed(true);
-    } catch (error) {
-      console.error(error);
-      alert("There was an error subscribing. Please try again later.");
-    }
-  };
 
   const toggleFAQ = (index: number) => {
     setExpandedFAQ(expandedFAQ === index ? null : index);
