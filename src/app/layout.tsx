@@ -14,8 +14,8 @@ const lexend = Lexend({
 });
 
 export const metadata: Metadata = {
-  title: "LavPass",
-  description: "Crowdsourced Restroom Code App",
+  title: "LavPass - Find Restrooms Near You",
+  description: "LavPass is an iPhone app that allows you to find restrooms near you. It's free and easy to use.",
 };
 
 export default function RootLayout({
