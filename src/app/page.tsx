@@ -271,42 +271,50 @@ export default function Home() {
         </div>
       </header>
 
-      {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div className="text-center md:text-left space-y-8">
-            <h1 className="text-5xl md:text-7xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
-              Your Throne Awaits.
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-xl">
-              Discover the best public restrooms near you. Never get caught without a bathroom again.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <a 
-                href="https://apps.apple.com/us/app/lavpass-restroom-finder/id6744234737"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transform transition hover:scale-105 duration-200"
-              >
-                <Image 
-                  src="/images/app_store_logo.png" 
-                  alt="Download on the App Store" 
-                  width={200} 
-                  height={67}
-                  className="rounded-xl shadow-lg"
-                />
-              </a>
+      {/* HERO SECTION */}
+      <section className="relative min-h-screen flex items-center pt-32 pb-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8 text-center md:text-left">
+              <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+                  Your Throne
+                </span>
+                <br />
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-blue-400">
+                  Awaits
+                </span>
+              </h1>
+              <p className="text-xl text-blue-100">
+                Find clean, accessible restrooms near you with real-time availability and verified access codes.
+              </p>
+              <div className="flex flex-col items-center md:items-start space-y-4">
+                <a
+                  href="https://apps.apple.com/us/app/lavpass/id6478728221"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transform transition hover:scale-105 duration-200"
+                >
+                  <Image
+                    src="/images/app_store_logo.png"
+                    alt="Download on the App Store"
+                    width={200}
+                    height={67}
+                    className="rounded-xl shadow-lg"
+                  />
+                </a>
+              </div>
             </div>
-          </div>
-          <div className="relative h-[400px] md:h-[600px]">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl backdrop-blur-sm transform rotate-3"></div>
-            <Image
-              src="/images/toilet.png"
-              alt="Toilet"
-              fill
-              className="object-contain transform -rotate-3 hover:rotate-0 transition-transform duration-500"
-              priority
-            />
+            <div className="relative h-[400px] md:h-[600px]">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl backdrop-blur-sm transform rotate-3"></div>
+              <Image
+                src="/images/toilet.png"
+                alt="Toilet"
+                fill
+                className="object-contain transform -rotate-3 hover:rotate-0 transition-transform duration-500"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -315,10 +323,10 @@ export default function Home() {
       <section id="features" className="py-32 px-6 relative">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
-            Why Choose LavPass?
+            Find Restrooms Near You.
           </h2>
           <div ref={featuresSectionRef} className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition duration-300">
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition duration-300 text-center md:text-left">
               <div className="relative w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden">
                 <Image
                   src="/images/lavpass_home_feed.png"
@@ -334,7 +342,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition duration-300">
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition duration-300 text-center md:text-left">
               <div className="relative w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden">
                 <Image
                   src="/images/lavpass_details_page.png"
@@ -350,7 +358,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition duration-300">
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition duration-300 text-center md:text-left">
               <div className="relative w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden">
                 <Image
                   src="/images/lavpass_change_code.png"
@@ -370,40 +378,28 @@ export default function Home() {
       </section>
 
       {/* STATS SECTION */}
-      <section id="stats" className="py-32 px-6 relative bg-black/30 backdrop-blur-sm" ref={statsRef}>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl transform rotate-3"></div>
-              <Image
-                src="/images/USA.png"
-                alt="USA Map with Restroom Locations"
-                width={600}
-                height={500}
-                className="rounded-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500"
-              />
-            </div>
-            <div className="space-y-8">
-              <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
-                The Largest Restroom Network
-              </h2>
-              <p className="text-xl text-blue-100">
-                Join thousands of users who trust LavPass for their restroom needs across the United States.
-              </p>
-              <div className="grid grid-cols-3 gap-4">
-                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center">
-                  <span className="block text-3xl font-bold text-blue-400">{restroomCount.toLocaleString()}+</span>
-                  <span className="text-sm text-blue-100">Restrooms</span>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center">
-                  <span className="block text-3xl font-bold text-blue-400">{citiesCount.toLocaleString()}+</span>
-                  <span className="text-sm text-blue-100">Cities</span>
-                </div>
-                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center">
-                  <span className="block text-3xl font-bold text-blue-400">{codesCount.toLocaleString()}+</span>
-                  <span className="text-sm text-blue-100">Codes</span>
-                </div>
+      <section className="py-20 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 text-center">
+              <div className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+                {restroomCount.toLocaleString()}+
               </div>
+              <p className="text-blue-100">Restrooms</p>
+            </div>
+
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 text-center">
+              <div className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+                {citiesCount.toLocaleString()}+
+              </div>
+              <p className="text-blue-100">Cities</p>
+            </div>
+
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 text-center">
+              <div className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+                {codesCount.toLocaleString()}+
+              </div>
+              <p className="text-blue-100">Access Codes</p>
             </div>
           </div>
         </div>
