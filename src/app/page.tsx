@@ -14,14 +14,10 @@ export default function Home() {
   const [restroomCount, setRestroomCount] = useState(0);
   const [citiesCount, setCitiesCount] = useState(0);
   const [codesCount, setCodesCount] = useState(0);
-  const [toiletPosition, setToiletPosition] = useState("25%");
-  const [heroTextPosition, setHeroTextPosition] = useState("10%");
 
   const heroTextRef = useRef<HTMLDivElement>(null);
   const featuresSectionRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
-  const waitlistSectionRef = useRef<HTMLDivElement>(null);
-  const toiletRef = useRef<HTMLDivElement>(null);
 
   const toggleFAQ = (index: number) => {
     setExpandedFAQ(expandedFAQ === index ? null : index);
@@ -255,31 +251,6 @@ export default function Home() {
     }
   }, [statsCounted, restroomCount, citiesCount, codesCount]);
 
-  // Handle responsive positioning
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 640) { // Mobile
-        setToiletPosition("60%");
-        setHeroTextPosition("20%");
-      } else if (window.innerWidth < 1024) { // Tablet
-        setToiletPosition("50%");
-        setHeroTextPosition("15%");
-      } else { // Desktop
-        setToiletPosition("25%");
-        setHeroTextPosition("10%");
-      }
-    };
-    
-    // Set initial position
-    handleResize();
-    
-    // Add event listener
-    window.addEventListener('resize', handleResize);
-    
-    // Cleanup
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   return (
     <div className="min-h-screen text-white relative bg-gradient-to-b from-[#1a1f3d] via-[#2a3356] to-[#1a1f3d]">
       {/* Animated Background */}
@@ -346,52 +317,52 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
             Why Choose LavPass?
           </h2>
-          <div ref={featuresSectionRef} className="grid md:grid-cols-3 gap-12">
-            {/* Feature 1 */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition-all duration-300">
-              <div className="h-64 md:h-80 relative mb-6">
+          <div ref={featuresSectionRef} className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition duration-300">
+              <div className="relative w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden">
                 <Image
                   src="/images/lavpass_home_feed.png"
-                  alt="Home Feed"
+                  alt="Find Restrooms"
                   fill
-                  className="object-contain rounded-xl"
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
-              <h3 className="text-2xl font-bold mb-4">Search Effortlessly</h3>
+              <h3 className="text-2xl font-bold mb-4">Find Restrooms</h3>
               <p className="text-blue-100">
-                Find the nearest restrooms with ease. Our intuitive interface makes it simple to locate clean, accessible facilities.
+                Locate clean, accessible restrooms near you with real-time availability and detailed information.
               </p>
             </div>
 
-            {/* Feature 2 */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition-all duration-300">
-              <div className="h-64 md:h-80 relative mb-6">
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition duration-300">
+              <div className="relative w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden">
                 <Image
                   src="/images/lavpass_details_page.png"
-                  alt="Details Page"
+                  alt="Access Codes"
                   fill
-                  className="object-contain rounded-xl"
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
-              <h3 className="text-2xl font-bold mb-4">Unlock Access</h3>
+              <h3 className="text-2xl font-bold mb-4">Access Codes</h3>
               <p className="text-blue-100">
-                Get instant access to verified restroom codes. Our community ensures you always have the right code when you need it.
+                Get instant access to restrooms with our community-shared access codes and instructions.
               </p>
             </div>
 
-            {/* Feature 3 */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition-all duration-300">
-              <div className="h-64 md:h-80 relative mb-6">
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition duration-300">
+              <div className="relative w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden">
                 <Image
                   src="/images/lavpass_change_code.png"
-                  alt="Change Code"
+                  alt="Rate & Review"
                   fill
-                  className="object-contain rounded-xl"
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
-              <h3 className="text-2xl font-bold mb-4">Contribute & Share</h3>
+              <h3 className="text-2xl font-bold mb-4">Rate & Review</h3>
               <p className="text-blue-100">
-                Join our community of contributors. Add new locations and help others find clean restrooms in your area.
+                Share your experiences and help others find the best restrooms in your area.
               </p>
             </div>
           </div>
@@ -572,7 +543,7 @@ export default function Home() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <p className="text-blue-100">
-                Have questions? We're here to help.
+                Have questions? We&apos;re here to help.
               </p>
               <a href="mailto:contact@lavpass.com" className="text-blue-100 hover:text-white transition mt-2 inline-block">
                 contact@lavpass.com
