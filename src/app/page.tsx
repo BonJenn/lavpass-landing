@@ -327,7 +327,7 @@ export default function Home() {
           </h2>
           <div ref={featuresSectionRef} className="grid md:grid-cols-3 gap-8">
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition duration-300 text-center md:text-left">
-              <div className="relative w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden">
+              <div className="relative w-full h-[300px] md:h-[400px] mb-6 rounded-xl overflow-hidden">
                 <Image
                   src="/images/lavpass_home_feed.png"
                   alt="Find Restrooms"
@@ -343,7 +343,7 @@ export default function Home() {
             </div>
 
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition duration-300 text-center md:text-left">
-              <div className="relative w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden">
+              <div className="relative w-full h-[300px] md:h-[400px] mb-6 rounded-xl overflow-hidden">
                 <Image
                   src="/images/lavpass_details_page.png"
                   alt="Access Codes"
@@ -359,7 +359,7 @@ export default function Home() {
             </div>
 
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition duration-300 text-center md:text-left">
-              <div className="relative w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden">
+              <div className="relative w-full h-[300px] md:h-[400px] mb-6 rounded-xl overflow-hidden">
                 <Image
                   src="/images/lavpass_change_code.png"
                   alt="Rate & Review"
