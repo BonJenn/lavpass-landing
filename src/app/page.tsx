@@ -27,6 +27,65 @@ export default function Home() {
     setExpandedFAQ(expandedFAQ === index ? null : index);
   };
 
+  const animateStats = () => {
+    if (statsCounted) return; // Don't animate again if already done
+    
+    try {
+      setStatsCounted(true);
+      
+      // Duration in milliseconds
+      const duration = 2000;
+      const startTime = Date.now();
+      const endValues = { restrooms: 60000, cities: 4500, codes: 10000 };
+      
+      // Start from current values rather than zero
+      const startValues = {
+        restrooms: restroomCount, 
+        cities: citiesCount, 
+        codes: codesCount
+      };
+      
+      const updateCounts = () => {
+        try {
+          const elapsedTime = Date.now() - startTime;
+          const progress = Math.min(elapsedTime / duration, 1);
+          
+          // Use easeOutQuart easing function for a nice effect
+          const easeProgress = 1 - Math.pow(1 - progress, 4);
+          
+          // Calculate new values based on progress
+          const newRestroomCount = Math.floor(startValues.restrooms + (endValues.restrooms - startValues.restrooms) * easeProgress);
+          const newCitiesCount = Math.floor(startValues.cities + (endValues.cities - startValues.cities) * easeProgress);
+          const newCodesCount = Math.floor(startValues.codes + (endValues.codes - startValues.codes) * easeProgress);
+          
+          // Update state
+          setRestroomCount(newRestroomCount);
+          setCitiesCount(newCitiesCount);
+          setCodesCount(newCodesCount);
+          
+          if (progress < 1) {
+            window.requestAnimationFrame(updateCounts);
+          }
+        } catch (error) {
+          console.error("Animation frame error:", error);
+          // Set final values if animation fails
+          setRestroomCount(endValues.restrooms);
+          setCitiesCount(endValues.cities);
+          setCodesCount(endValues.codes);
+        }
+      };
+      
+      // Start the animation
+      window.requestAnimationFrame(updateCounts);
+    } catch (error) {
+      console.error("Animation initialization error:", error);
+      // Set final values if animation fails to start
+      setRestroomCount(60000);
+      setCitiesCount(4500);
+      setCodesCount(10000);
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -194,66 +253,7 @@ export default function Home() {
       setCitiesCount(4500);
       setCodesCount(10000);
     }
-  }, [statsCounted]);
-  
-  const animateStats = () => {
-    if (statsCounted) return; // Don't animate again if already done
-    
-    try {
-      setStatsCounted(true);
-      
-      // Duration in milliseconds
-      const duration = 2000;
-      const startTime = Date.now();
-      const endValues = { restrooms: 60000, cities: 4500, codes: 10000 };
-      
-      // Start from current values rather than zero
-      const startValues = {
-        restrooms: restroomCount, 
-        cities: citiesCount, 
-        codes: codesCount
-      };
-      
-      const updateCounts = () => {
-        try {
-          const elapsedTime = Date.now() - startTime;
-          const progress = Math.min(elapsedTime / duration, 1);
-          
-          // Use easeOutQuart easing function for a nice effect
-          const easeProgress = 1 - Math.pow(1 - progress, 4);
-          
-          // Calculate new values based on progress
-          const newRestroomCount = Math.floor(startValues.restrooms + (endValues.restrooms - startValues.restrooms) * easeProgress);
-          const newCitiesCount = Math.floor(startValues.cities + (endValues.cities - startValues.cities) * easeProgress);
-          const newCodesCount = Math.floor(startValues.codes + (endValues.codes - startValues.codes) * easeProgress);
-          
-          // Update state
-          setRestroomCount(newRestroomCount);
-          setCitiesCount(newCitiesCount);
-          setCodesCount(newCodesCount);
-          
-          if (progress < 1) {
-            window.requestAnimationFrame(updateCounts);
-          }
-        } catch (error) {
-          console.error("Animation frame error:", error);
-          // Set final values if animation fails
-          setRestroomCount(endValues.restrooms);
-          setCitiesCount(endValues.cities);
-          setCodesCount(endValues.codes);
-        }
-      };
-      
-      // Start the animation
-      window.requestAnimationFrame(updateCounts);
-    } catch (error) {
-      console.error("Animation initialization error:", error);
-      // Set final values if animation fails to start
-      setRestroomCount(60000);
-      setCitiesCount(4500);
-      setCodesCount(10000);
-    }
-  };
+  }, [statsCounted, animateStats]);
 
   // Handle responsive positioning
   useEffect(() => {
@@ -349,7 +349,7 @@ export default function Home() {
           <div ref={featuresSectionRef} className="grid md:grid-cols-3 gap-12">
             {/* Feature 1 */}
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition-all duration-300">
-              <div className="h-48 relative mb-6">
+              <div className="h-64 md:h-80 relative mb-6">
                 <Image
                   src="/images/lavpass_home_feed.png"
                   alt="Home Feed"
@@ -365,7 +365,7 @@ export default function Home() {
 
             {/* Feature 2 */}
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition-all duration-300">
-              <div className="h-48 relative mb-6">
+              <div className="h-64 md:h-80 relative mb-6">
                 <Image
                   src="/images/lavpass_details_page.png"
                   alt="Details Page"
@@ -381,7 +381,7 @@ export default function Home() {
 
             {/* Feature 3 */}
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition-all duration-300">
-              <div className="h-48 relative mb-6">
+              <div className="h-64 md:h-80 relative mb-6">
                 <Image
                   src="/images/lavpass_change_code.png"
                   alt="Change Code"
