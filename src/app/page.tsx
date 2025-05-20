@@ -14,8 +14,8 @@ export default function Home() {
   const [restroomCount, setRestroomCount] = useState(0);
   const [citiesCount, setCitiesCount] = useState(0);
   const [codesCount, setCodesCount] = useState(0);
-  const [toiletPosition, setToiletPosition] = useState("13%");
-  const [heroTextPosition, setHeroTextPosition] = useState("7%");
+  const [toiletPosition, setToiletPosition] = useState("25%");
+  const [heroTextPosition, setHeroTextPosition] = useState("10%");
 
   const heroTextRef = useRef<HTMLDivElement>(null);
   const featuresSectionRef = useRef<HTMLDivElement>(null);
@@ -258,12 +258,15 @@ export default function Home() {
   // Handle responsive positioning
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setToiletPosition("30%");
-        setHeroTextPosition("32%");
-      } else {
-        setToiletPosition("13%");
-        setHeroTextPosition("7%");
+      if (window.innerWidth < 640) { // Mobile
+        setToiletPosition("60%");
+        setHeroTextPosition("20%");
+      } else if (window.innerWidth < 1024) { // Tablet
+        setToiletPosition("50%");
+        setHeroTextPosition("15%");
+      } else { // Desktop
+        setToiletPosition("25%");
+        setHeroTextPosition("10%");
       }
     };
     
@@ -278,270 +281,242 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen text-white relative">
-      {/* BEAUTIFUL BACKGROUND (Gradient + Background Image) */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#445382] via-[#445382] to-[#445382]">
-        <div className="absolute inset-0 bg-[url('/images/background_texture.png')] bg-cover bg-center opacity-30"></div>
+    <div className="min-h-screen text-white relative bg-gradient-to-b from-[#1a1f3d] via-[#2a3356] to-[#1a1f3d]">
+      {/* Animated Background */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-[url('/images/background_texture.png')] bg-cover bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-transparent to-blue-900/20"></div>
       </div>
 
       {/* HEADER */}
-      <header className="relative z-10 flex justify-center py-6">
-        <Image src="/images/lavpass_logo_white.png" alt="LavPass Logo" width={200} height={80} />
+      <header className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <Image src="/images/lavpass_logo_white.png" alt="LavPass Logo" width={160} height={64} className="cursor-pointer" />
+          <nav className="hidden md:flex space-x-8">
+            <a href="#features" className="text-white/80 hover:text-white transition">Features</a>
+            <a href="#stats" className="text-white/80 hover:text-white transition">Stats</a>
+            <a href="#faq" className="text-white/80 hover:text-white transition">FAQ</a>
+          </nav>
+        </div>
       </header>
 
       {/* HERO */}
-      <section className="relative z-10 px-6 md:px-12 min-h-[45vh] md:min-h-[100vh] pt-[5vh] md:pt-[5vh] pb-0 md:pb-10 overflow-hidden">
-        <div 
-          className="absolute z-20 w-full text-center"
-          ref={heroTextRef}
-          style={{
-            top: heroTextPosition,
-            left: '50%',
-            transform: 'translate(-50%, 0)'
-          }}
-        >
-          <div className="max-w-[800px] mx-auto px-4 mb-[20vh] md:mb-0">
-            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold">Your Throne Awaits.</h1>
-            <p className="mt-1 sm:mt-3 text-base sm:text-lg lg:text-2xl">Discover the best public restrooms near you.</p>
-          </div>
-        </div>
-
-        <div
-          ref={toiletRef}
-          className="toilet absolute z-10 left-1/2"
-          style={{ 
-            top: toiletPosition, 
-            width: "100%",
-            maxWidth: "1600px",
-            height: "auto",
-            aspectRatio: "4/3",
-            transform: "translate(-50%, 0)",
-            filter: "drop-shadow(-15px 0 10px rgba(0, 0, 0, 0.3))",
-            overflow: "hidden"
-          }}
-        >
-          <Image
-            src="/images/toilet.png"
-            alt="Toilet"
-            unoptimized
-            fill
-            className="object-contain max-h-[50vh] md:max-h-none w-full md:mt-0"
-          />
-        </div>
-      </section>
-
-      {/* THIS DIV ENSURES BLUE EXTENDS FULLY */}
-      <div className="h-10 md:h-32 bg-blue-700 absolute left-0 right-0 -bottom-1 z-0"></div>
-
-      {/* ABOUT */}
-      <section className="relative z-20 mt-3 sm:-mt-16 md:-mt-32 py-10 bg-black text-white px-6 text-center shadow-lg rounded-lg">
-        <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-6">Discover Loos Near You</h1>
-        <p className="text-lg mx-auto max-w-xl mb-10">
-          Never get caught without a bathroom again. LavPass helps you find clean, accessible restrooms with verified entry codes wherever you go.
-        </p>
-        
-        <div className="mt-8 flex justify-center">
-          <div className="w-full max-w-lg mx-auto flex flex-col items-center bg-gradient-to-br from-blue-900/50 to-blue-700/30 rounded-xl p-6 sm:p-8 shadow-lg border border-blue-500/20">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-3">Available Now</h2>
-            <p className="text-base sm:text-lg text-blue-100 mb-6">Get it on iPhone now. Coming soon to Android.</p>
-            
-            <a 
-              href="https://apps.apple.com/us/app/lavpass-restroom-finder/id6744234737"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transform transition hover:scale-105 duration-200 hover:shadow-xl"
-            >
-              <Image 
-                src="/images/app_store_logo.png" 
-                alt="Download on the App Store" 
-                width={200} 
-                height={67}
-                className="rounded-lg shadow-md"
-              />
-            </a>
+      <section className="relative min-h-screen flex items-center justify-center pt-20 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="text-center md:text-left space-y-8">
+            <h1 className="text-5xl md:text-7xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+              Your Throne Awaits.
+            </h1>
+            <p className="text-xl md:text-2xl text-blue-100 max-w-xl">
+              Discover the best public restrooms near you. Never get caught without a bathroom again.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+              <a 
+                href="https://apps.apple.com/us/app/lavpass-restroom-finder/id6744234737"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transform transition hover:scale-105 duration-200"
+              >
+                <Image 
+                  src="/images/app_store_logo.png" 
+                  alt="Download on the App Store" 
+                  width={200} 
+                  height={67}
+                  className="rounded-xl shadow-lg"
+                />
+              </a>
             </div>
+          </div>
+          <div className="relative h-[400px] md:h-[600px]">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl backdrop-blur-sm transform rotate-3"></div>
+            <Image
+              src="/images/toilet.png"
+              alt="Toilet"
+              fill
+              className="object-contain transform -rotate-3 hover:rotate-0 transition-transform duration-500"
+              priority
+            />
+          </div>
         </div>
       </section>
 
       {/* FEATURES */}
-      <section className="py-20 px-6 sm:px-12 bg-gray-900 text-white">
-        <div ref={featuresSectionRef} className="max-w-6xl mx-auto space-y-24 md:space-y-32">
-          {/* Feature 1 */}
-          <div className="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16 opacity-100">
-            <div className="md:w-1/2 text-center md:text-left">
-              <h2 className="text-3xl md:text-4xl font-bold">Search Effortlessly</h2>
-              <p className="mt-4 text-base md:text-lg">
-                Find the nearest restrooms with ease.
+      <section id="features" className="py-32 px-6 relative">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+            Why Choose LavPass?
+          </h2>
+          <div ref={featuresSectionRef} className="grid md:grid-cols-3 gap-12">
+            {/* Feature 1 */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition-all duration-300">
+              <div className="h-48 relative mb-6">
+                <Image
+                  src="/images/lavpass_home_feed.png"
+                  alt="Home Feed"
+                  fill
+                  className="object-contain rounded-xl"
+                />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Search Effortlessly</h3>
+              <p className="text-blue-100">
+                Find the nearest restrooms with ease. Our intuitive interface makes it simple to locate clean, accessible facilities.
               </p>
             </div>
-            <div className="md:w-1/2 flex justify-center bg-gray-900 p-6 rounded-lg shadow-lg">
-              <Image
-                src="/images/lavpass_home_feed.png"
-                alt="Home Feed"
-                width={300}
-                height={300}
-                className="transform transition-transform hover:scale-105 duration-300"
-              />
-            </div>
-          </div>
 
-          {/* Feature 2 */}
-          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16 opacity-100">
-            <div className="md:w-1/2 text-center md:text-right">
-              <h2 className="text-3xl md:text-4xl font-bold">Unlock Access to Clean Restrooms</h2>
-              <p className="mt-4 text-base md:text-lg">
-                Crowdsourced restroom codes for whenever you need to go.
+            {/* Feature 2 */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition-all duration-300">
+              <div className="h-48 relative mb-6">
+                <Image
+                  src="/images/lavpass_details_page.png"
+                  alt="Details Page"
+                  fill
+                  className="object-contain rounded-xl"
+                />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Unlock Access</h3>
+              <p className="text-blue-100">
+                Get instant access to verified restroom codes. Our community ensures you always have the right code when you need it.
               </p>
             </div>
-            <div className="md:w-1/2 flex justify-center bg-gray-900 p-6 rounded-lg shadow-lg">
-              <Image
-                src="/images/lavpass_details_page.png"
-                alt="Details Page"
-                width={300}
-                height={300}
-                className="transform transition-transform hover:scale-105 duration-300"
-              />
-        </div>
-          </div>
 
-          {/* Feature 3 */}
-          <div className="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16 opacity-100">
-            <div className="md:w-1/2 text-center md:text-left">
-              <h2 className="text-3xl md:text-4xl font-bold">Contribute and Share</h2>
-              <p className="mt-4 text-base md:text-lg">
-                Help others by adding restrooms and verifying codes.
+            {/* Feature 3 */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 transform hover:scale-105 transition-all duration-300">
+              <div className="h-48 relative mb-6">
+                <Image
+                  src="/images/lavpass_change_code.png"
+                  alt="Change Code"
+                  fill
+                  className="object-contain rounded-xl"
+                />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Contribute & Share</h3>
+              <p className="text-blue-100">
+                Join our community of contributors. Add new locations and help others find clean restrooms in your area.
               </p>
             </div>
-            <div className="md:w-1/2 flex justify-center bg-gray-900 p-6 rounded-lg shadow-lg">
-              <Image
-                src="/images/lavpass_change_code.png"
-                alt="Change Code"
-                width={300}
-                height={300}
-                className="transform transition-transform hover:scale-105 duration-300"
-              />
-        </div>
           </div>
         </div>
       </section>
 
       {/* STATS SECTION */}
-      <section className="relative z-30 py-20 px-6 sm:px-12 bg-white text-gray-900" ref={statsRef}>
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-            <div className="md:w-1/2">
+      <section id="stats" className="py-32 px-6 relative bg-black/30 backdrop-blur-sm" ref={statsRef}>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl transform rotate-3"></div>
               <Image
                 src="/images/USA.png"
                 alt="USA Map with Restroom Locations"
-                width={500}
-                height={400}
-                className="rounded-lg"
+                width={600}
+                height={500}
+                className="rounded-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500"
               />
-          </div>
-            <div className="md:w-1/2 text-center md:text-left">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">Verified Restrooms All Over the US</h2>
-              <p className="text-lg md:text-xl">
-                LavPass has the largest database of verified public restrooms across the United States, 
-                with real-time access codes and user reviews.
+            </div>
+            <div className="space-y-8">
+              <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+                The Largest Restroom Network
+              </h2>
+              <p className="text-xl text-blue-100">
+                Join thousands of users who trust LavPass for their restroom needs across the United States.
               </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <div className="bg-blue-100 px-6 py-4 rounded-lg text-center">
-                  <span className="block text-3xl font-bold text-blue-600">{restroomCount.toLocaleString()}+</span>
-                  <span className="text-sm text-gray-600">Verified Restrooms</span>
+              <div className="grid grid-cols-3 gap-4">
+                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center">
+                  <span className="block text-3xl font-bold text-blue-400">{restroomCount.toLocaleString()}+</span>
+                  <span className="text-sm text-blue-100">Restrooms</span>
                 </div>
-                <div className="bg-blue-100 px-6 py-4 rounded-lg text-center">
-                  <span className="block text-3xl font-bold text-blue-600">{citiesCount.toLocaleString()}+</span>
-                  <span className="text-sm text-gray-600">Cities Covered</span>
+                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center">
+                  <span className="block text-3xl font-bold text-blue-400">{citiesCount.toLocaleString()}+</span>
+                  <span className="text-sm text-blue-100">Cities</span>
                 </div>
-                <div className="bg-blue-100 px-6 py-4 rounded-lg text-center">
-                  <span className="block text-3xl font-bold text-blue-600">{codesCount.toLocaleString()}+</span>
-                  <span className="text-sm text-gray-600">Restroom Codes</span>
+                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center">
+                  <span className="block text-3xl font-bold text-blue-400">{codesCount.toLocaleString()}+</span>
+                  <span className="text-sm text-blue-100">Codes</span>
                 </div>
               </div>
-          </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ SECTION */}
-      <section className="relative z-30 bg-black text-white py-20 px-8 shadow-lg rounded-lg mx-4 sm:mx-8 my-8">
-        <h2 className="text-4xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
-        <div className="max-w-3xl mx-auto space-y-6">
-          {[
-            {
-              question: "How does LavPass work?",
-              answer: "LavPass uses your location to find nearby restrooms and provides you with detailed information and user reviews."
-            },
-            {
-              question: "Is LavPass free?",
-              answer: "Absolutely, LavPass is completely free to use."
-            },
-            {
-              question: "How accurate are the codes?",
-              answer: "Our codes are community-sourced and verified. Each code shows the last update time, and users can confirm or report accuracy to ensure reliability."
-            },
-            {
-              question: "What if a code is incorrect?",
-              answer: "If a code is incorrect, report it instantly. LavPass relies on community verification to flag outdated codes and add new ones for accuracy."
-            }
-          ].map((faq, index) => (
-            <div 
-              key={index} 
-              className={`bg-gray-900 rounded-lg overflow-hidden shadow-md transition-all duration-300 ${expandedFAQ === index ? 'ring-2 ring-blue-400' : ''}`}
-            >
-              <button 
-                className="w-full px-6 py-4 text-left flex justify-between items-center"
-                onClick={() => toggleFAQ(index)}
-                aria-expanded={expandedFAQ === index}
-              >
-                <h3 className="text-xl sm:text-2xl font-semibold">{faq.question}</h3>
-                <span className={`transform transition-transform duration-300 ${expandedFAQ === index ? 'rotate-180' : ''}`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </span>
-            </button>
+      <section id="faq" className="py-32 px-6 relative">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-6">
+            {[
+              {
+                question: "How does LavPass work?",
+                answer: "LavPass uses your location to find nearby restrooms and provides you with detailed information and user reviews."
+              },
+              {
+                question: "Is LavPass free?",
+                answer: "Absolutely, LavPass is completely free to use."
+              },
+              {
+                question: "How accurate are the codes?",
+                answer: "Our codes are community-sourced and verified. Each code shows the last update time, and users can confirm or report accuracy to ensure reliability."
+              },
+              {
+                question: "What if a code is incorrect?",
+                answer: "If a code is incorrect, report it instantly. LavPass relies on community verification to flag outdated codes and add new ones for accuracy."
+              }
+            ].map((faq, index) => (
               <div 
-                className={`px-6 transition-all duration-300 ease-in-out overflow-hidden ${
-                  expandedFAQ === index ? 'max-h-40 pb-6' : 'max-h-0'
+                key={index} 
+                className={`bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 ${
+                  expandedFAQ === index ? 'ring-2 ring-blue-400' : ''
                 }`}
               >
-                <p className="text-base sm:text-lg text-gray-300">{faq.answer}</p>
+                <button 
+                  className="w-full px-8 py-6 text-left flex justify-between items-center"
+                  onClick={() => toggleFAQ(index)}
+                  aria-expanded={expandedFAQ === index}
+                >
+                  <h3 className="text-xl font-semibold">{faq.question}</h3>
+                  <span className={`transform transition-transform duration-300 ${expandedFAQ === index ? 'rotate-180' : ''}`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </span>
+                </button>
+                <div 
+                  className={`px-8 transition-all duration-300 ease-in-out overflow-hidden ${
+                    expandedFAQ === index ? 'max-h-40 pb-6' : 'max-h-0'
+                  }`}
+                >
+                  <p className="text-blue-100">{faq.answer}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* DOWNLOAD SECTION */}
-      <section className="relative z-30 bg-gradient-to-br from-[#445382] to-[#2a3356] text-white py-16 sm:py-20 px-8 text-center shadow-lg rounded-lg mx-4 sm:mx-8 my-8" ref={waitlistSectionRef}>
-        <div className="max-w-3xl mx-auto">
-          <div className="relative mb-8">
-            <h2 className="text-4xl sm:text-5xl font-bold">Get LavPass</h2>
-            <div className="flex justify-center mt-2 space-x-2">
-              <span className="text-3xl">💩</span>
-              <span className="text-3xl">😍</span>
-            </div>
-          </div>
-          
-          <p className="text-lg mb-8 max-w-xl mx-auto">
+      <section className="py-32 px-6 relative bg-gradient-to-br from-[#1a1f3d] to-[#2a3356]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+            Get LavPass Today
+          </h2>
+          <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
             Your go-to restroom companion - open the app and instantly find the nearest public restroom. 
             Available now for iPhone.
           </p>
-          
-          <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl w-full max-w-md mx-auto mb-4">
+          <div className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl inline-block">
             <a 
               href="https://apps.apple.com/us/app/lavpass-restroom-finder/id6744234737"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block transform transition hover:scale-105 duration-300 w-full"
+              className="transform transition hover:scale-105 duration-300 inline-block"
             >
               <Image 
                 src="/images/app_store_logo.png" 
                 alt="Download on the App Store" 
                 width={200} 
                 height={67}
-                className="shadow-lg mx-auto"
+                className="rounded-xl shadow-lg"
               />
             </a>
             <p className="text-sm text-blue-100 mt-4">Free download • 17+ • 30.7 MB</p>
@@ -550,49 +525,62 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="relative z-30 bg-black text-white py-12 px-6 text-center">
-        <div className="max-w-5xl mx-auto">
-          <Link href="/" className="cursor-pointer">
-            <Image src="/images/lavpass_logo_white.png" alt="LavPass Logo" width={140} height={60} className="mx-auto mb-6" />
-          </Link>
-          
-          <div className="flex justify-center space-x-6 mb-8">
-            {/* Social Media Icons */}
-            <a href="https://www.facebook.com/profile.php?id=61574902000865&mibextid=wwXIfr&mibextid=wwXIfr" className="hover:opacity-80 transition transform hover:scale-110 cursor-pointer">
-              {/* Facebook */}
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
-                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
-              </svg>
-            </a>
-            <a href="https://www.instagram.com/lavpass.app/" className="hover:opacity-80 transition transform hover:scale-110 cursor-pointer">
-              {/* Instagram */}
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-            </a>
-            <a href="https://www.tiktok.com/@lavpass.app" className="hover:opacity-80 transition transform hover:scale-110 cursor-pointer">
-              {/* TikTok */}
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
-                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-              </svg>
-            </a>
-            <a href="https://youtube.com/@lavpass?si=HHjMdvlrevd4cMrI" className="hover:opacity-80 transition transform hover:scale-110 cursor-pointer">
-              {/* YouTube */}
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
-                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-              </svg>
-            </a>
+      <footer className="bg-black/50 backdrop-blur-sm py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-12">
+            <div className="space-y-6">
+              <Image src="/images/lavpass_logo_white.png" alt="LavPass Logo" width={140} height={60} />
+              <p className="text-blue-100">
+                Your trusted companion for finding clean, accessible restrooms wherever you go.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <ul className="space-y-2">
+                <li><Link href="/about" className="text-blue-100 hover:text-white transition">About</Link></li>
+                <li><Link href="/terms-of-service" className="text-blue-100 hover:text-white transition">Terms of Service</Link></li>
+                <li><Link href="/privacy-policy" className="text-blue-100 hover:text-white transition">Privacy Policy</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Connect</h3>
+              <div className="flex space-x-4">
+                <a href="https://www.facebook.com/profile.php?id=61574902000865" className="text-blue-100 hover:text-white transition">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/lavpass.app/" className="text-blue-100 hover:text-white transition">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+                <a href="https://www.tiktok.com/@lavpass.app" className="text-blue-100 hover:text-white transition">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                  </svg>
+                </a>
+                <a href="https://youtube.com/@lavpass" className="text-blue-100 hover:text-white transition">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Contact</h3>
+              <p className="text-blue-100">
+                Have questions? We're here to help.
+              </p>
+              <a href="mailto:contact@lavpass.com" className="text-blue-100 hover:text-white transition mt-2 inline-block">
+                contact@lavpass.com
+              </a>
+            </div>
           </div>
-          
-          <p className="text-sm mb-4">&copy; 2025 LavPass. All rights reserved.</p>
-          <div className="flex flex-wrap justify-center">
-            <Link href="/terms-of-service" className="text-sm mx-3 my-1 hover:underline cursor-pointer">Terms of Service</Link>
-            <Link href="/privacy-policy" className="text-sm mx-3 my-1 hover:underline cursor-pointer">Privacy Policy</Link>
-            <Link href="/end-user-license-agreement" className="text-sm mx-3 my-1 hover:underline cursor-pointer">User Agreement</Link>
-            <a href="#" className="text-sm mx-3 my-1 hover:underline cursor-pointer">Contact Us</a>
-            <Link href="/about" className="text-sm mx-3 my-1 hover:underline cursor-pointer">About</Link>
+          <div className="border-t border-white/10 mt-12 pt-8 text-center text-sm text-blue-100">
+            <p>&copy; 2025 LavPass. All rights reserved.</p>
           </div>
         </div>
       </footer>
