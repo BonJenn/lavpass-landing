@@ -359,7 +359,7 @@ export default function Home() {
                 className="rounded-lg shadow-md"
               />
             </a>
-          </div>
+            </div>
         </div>
       </section>
 
@@ -401,7 +401,7 @@ export default function Home() {
                 height={300}
                 className="transform transition-transform hover:scale-105 duration-300"
               />
-            </div>
+        </div>
           </div>
 
           {/* Feature 3 */}
@@ -420,7 +420,7 @@ export default function Home() {
                 height={300}
                 className="transform transition-transform hover:scale-105 duration-300"
               />
-            </div>
+        </div>
           </div>
         </div>
       </section>
@@ -437,7 +437,7 @@ export default function Home() {
                 height={400}
                 className="rounded-lg"
               />
-            </div>
+          </div>
             <div className="md:w-1/2 text-center md:text-left">
               <h2 className="text-3xl md:text-5xl font-bold mb-6">Verified Restrooms All Over the US</h2>
               <p className="text-lg md:text-xl">
@@ -458,7 +458,7 @@ export default function Home() {
                   <span className="text-sm text-gray-600">Restroom Codes</span>
                 </div>
               </div>
-            </div>
+          </div>
           </div>
         </div>
       </section>
@@ -500,7 +500,7 @@ export default function Home() {
                     <polyline points="6 9 12 15 18 9"></polyline>
                   </svg>
                 </span>
-              </button>
+            </button>
               <div 
                 className={`px-6 transition-all duration-300 ease-in-out overflow-hidden ${
                   expandedFAQ === index ? 'max-h-40 pb-6' : 'max-h-0'
