@@ -272,7 +272,7 @@ export default function Home() {
       </header>
 
       {/* HERO SECTION */}
-      <section className="relative min-h-screen flex items-center pt-32 pb-20">
+      <section className="relative min-h-screen flex items-center pt-32 pb-12">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 text-center md:text-left">
@@ -320,7 +320,7 @@ export default function Home() {
       </section>
 
       {/* FEATURES */}
-      <section id="features" className="py-32 px-6 relative">
+      <section id="features" className="py-20 px-6 relative">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
             Find Restrooms Near You.
@@ -378,7 +378,7 @@ export default function Home() {
       </section>
 
       {/* STATS SECTION */}
-      <section className="py-20 relative">
+      <section className="py-16 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 text-center">
@@ -406,7 +406,7 @@ export default function Home() {
       </section>
 
       {/* FAQ SECTION */}
-      <section id="faq" className="py-32 px-6 relative">
+      <section id="faq" className="py-20 px-6 relative">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
             Frequently Asked Questions
