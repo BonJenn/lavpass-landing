@@ -27,65 +27,6 @@ export default function Home() {
     setExpandedFAQ(expandedFAQ === index ? null : index);
   };
 
-  const animateStats = () => {
-    if (statsCounted) return; // Don't animate again if already done
-    
-    try {
-      setStatsCounted(true);
-      
-      // Duration in milliseconds
-      const duration = 2000;
-      const startTime = Date.now();
-      const endValues = { restrooms: 60000, cities: 4500, codes: 10000 };
-      
-      // Start from current values rather than zero
-      const startValues = {
-        restrooms: restroomCount, 
-        cities: citiesCount, 
-        codes: codesCount
-      };
-      
-      const updateCounts = () => {
-        try {
-          const elapsedTime = Date.now() - startTime;
-          const progress = Math.min(elapsedTime / duration, 1);
-          
-          // Use easeOutQuart easing function for a nice effect
-          const easeProgress = 1 - Math.pow(1 - progress, 4);
-          
-          // Calculate new values based on progress
-          const newRestroomCount = Math.floor(startValues.restrooms + (endValues.restrooms - startValues.restrooms) * easeProgress);
-          const newCitiesCount = Math.floor(startValues.cities + (endValues.cities - startValues.cities) * easeProgress);
-          const newCodesCount = Math.floor(startValues.codes + (endValues.codes - startValues.codes) * easeProgress);
-          
-          // Update state
-          setRestroomCount(newRestroomCount);
-          setCitiesCount(newCitiesCount);
-          setCodesCount(newCodesCount);
-          
-          if (progress < 1) {
-            window.requestAnimationFrame(updateCounts);
-          }
-        } catch (error) {
-          console.error("Animation frame error:", error);
-          // Set final values if animation fails
-          setRestroomCount(endValues.restrooms);
-          setCitiesCount(endValues.cities);
-          setCodesCount(endValues.codes);
-        }
-      };
-      
-      // Start the animation
-      window.requestAnimationFrame(updateCounts);
-    } catch (error) {
-      console.error("Animation initialization error:", error);
-      // Set final values if animation fails to start
-      setRestroomCount(60000);
-      setCitiesCount(4500);
-      setCodesCount(10000);
-    }
-  };
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -194,6 +135,65 @@ export default function Home() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     
+    const animateStats = () => {
+      if (statsCounted) return; // Don't animate again if already done
+      
+      try {
+        setStatsCounted(true);
+        
+        // Duration in milliseconds
+        const duration = 2000;
+        const startTime = Date.now();
+        const endValues = { restrooms: 60000, cities: 4500, codes: 10000 };
+        
+        // Start from current values rather than zero
+        const startValues = {
+          restrooms: restroomCount, 
+          cities: citiesCount, 
+          codes: codesCount
+        };
+        
+        const updateCounts = () => {
+          try {
+            const elapsedTime = Date.now() - startTime;
+            const progress = Math.min(elapsedTime / duration, 1);
+            
+            // Use easeOutQuart easing function for a nice effect
+            const easeProgress = 1 - Math.pow(1 - progress, 4);
+            
+            // Calculate new values based on progress
+            const newRestroomCount = Math.floor(startValues.restrooms + (endValues.restrooms - startValues.restrooms) * easeProgress);
+            const newCitiesCount = Math.floor(startValues.cities + (endValues.cities - startValues.cities) * easeProgress);
+            const newCodesCount = Math.floor(startValues.codes + (endValues.codes - startValues.codes) * easeProgress);
+            
+            // Update state
+            setRestroomCount(newRestroomCount);
+            setCitiesCount(newCitiesCount);
+            setCodesCount(newCodesCount);
+            
+            if (progress < 1) {
+              window.requestAnimationFrame(updateCounts);
+            }
+          } catch (error) {
+            console.error("Animation frame error:", error);
+            // Set final values if animation fails
+            setRestroomCount(endValues.restrooms);
+            setCitiesCount(endValues.cities);
+            setCodesCount(endValues.codes);
+          }
+        };
+        
+        // Start the animation
+        window.requestAnimationFrame(updateCounts);
+      } catch (error) {
+        console.error("Animation initialization error:", error);
+        // Set final values if animation fails to start
+        setRestroomCount(60000);
+        setCitiesCount(4500);
+        setCodesCount(10000);
+      }
+    };
+    
     // For mobile, just set the final values immediately without animation
     if (isMobile && !statsCounted) {
       setStatsCounted(true);
@@ -253,7 +253,7 @@ export default function Home() {
       setCitiesCount(4500);
       setCodesCount(10000);
     }
-  }, [statsCounted, animateStats]);
+  }, [statsCounted, restroomCount, citiesCount, codesCount]);
 
   // Handle responsive positioning
   useEffect(() => {
