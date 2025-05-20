@@ -41,24 +41,25 @@ export default function About() {
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
               <h2 className="text-2xl font-bold mb-4 text-white">Our Mission</h2>
               <p>
-                We're on a mission to make restroom access easier for everyone. Whether you're traveling, shopping, or just out and about, 
-                LavPass helps you find the nearest clean restroom with verified access codes.
+                At LavPass, we&apos;re on a mission to make finding clean, accessible restrooms effortless. We believe that everyone deserves 
+                to know where they can find a safe and comfortable restroom when they need it most.
               </p>
             </div>
 
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
               <h2 className="text-2xl font-bold mb-4 text-white">Our Story</h2>
               <p>
-                After experiencing the frustration of searching for restrooms in unfamiliar places, our team decided to create a solution. 
-                LavPass combines community knowledge with technology to provide a reliable restroom finder that works for everyone.
+                Born from a simple yet universal need, LavPass was created to solve a problem we&apos;ve all faced: the urgent search for a 
+                restroom in an unfamiliar place. What started as a personal solution has grown into a nationwide community of users helping 
+                each other find the best restrooms across the country.
               </p>
             </div>
 
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
-              <h2 className="text-2xl font-bold mb-4 text-white">Join Our Community</h2>
+              <h2 className="text-2xl font-bold mb-4 text-white">Community Driven</h2>
               <p>
-                LavPass is more than just an app - it's a community of people helping each other find clean, accessible restrooms. 
-                By contributing locations and codes, you're helping make life easier for everyone.
+                LavPass is more than just an app - it&apos;s a community. Every restroom location, access code, and review comes from our 
+                users. Together, we&apos;re building the most comprehensive and reliable restroom finder in the United States.
               </p>
             </div>
           </div>
