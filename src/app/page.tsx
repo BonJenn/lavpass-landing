@@ -282,7 +282,7 @@ export default function Home() {
                 </span>
                 <br />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-blue-400">
-                  Awaits
+                  Awaits.
                 </span>
               </h1>
               <p className="text-xl text-blue-100">
