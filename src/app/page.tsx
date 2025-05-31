@@ -290,7 +290,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col items-center md:items-start space-y-4">
                 <a
-                  href="https://apps.apple.com/us/app/lavpass/id6478728221"
+                  href="https://apps.apple.com/us/app/lavpass-restroom-finder/id6744234737"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transform transition hover:scale-105 duration-200"
