@@ -261,7 +261,7 @@ export default function Home() {
 
       {/* HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-center md:justify-between items-center">
           <Image src="/images/lavpass_logo_white.png" alt="LavPass Logo" width={160} height={64} className="cursor-pointer" />
           <nav className="hidden md:flex space-x-8">
             <a href="#features" className="text-white/80 hover:text-white transition">Features</a>
