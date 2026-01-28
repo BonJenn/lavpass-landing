@@ -26,6 +26,9 @@ export default function TermsOfService() {
         </div>
       </header>
 
+      {/* TikTok Domain Verification */}
+      <div style={{ display: 'none' }}>tiktok-developers-site-verification=Q63Q8wpK5VSKX31ybwkBCxPOzlWtd8l9</div>
+
       {/* MAIN CONTENT */}
       <main className="pt-32 px-6">
         <div className="max-w-4xl mx-auto">
